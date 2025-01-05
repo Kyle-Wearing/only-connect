@@ -14,6 +14,7 @@ export function LogIn() {
       const user = await getUser(username);
       if (user) {
         setUser(user);
+        localStorage.setItem("user", username);
         navigate("/home");
       }
     }

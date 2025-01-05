@@ -1,10 +1,35 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../context/UserContext";
+import { getQuizes } from "../../utils";
+import { useNavigate } from "react-router-dom";
 
 export function HomeScreen() {
   const { user } = useContext(UserContext);
+  const [quizes, setQuizes] = useState([]);
+  const navigate = useNavigate();
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    getQuizes(user).then((response) => {
+      const quizList = [];
+      for (const quiz in response) {
+        quizList.push({ title: Object.keys(response[quiz])[0], id: quiz });
+      }
+      setQuizes(quizList || []);
+    });
+  }, []);
 
-  return <div></div>;
+  return (
+    <div>
+      <button
+        onClick={() => {
+          navigate("/create-quiz");
+        }}
+      >
+        Create a new quiz
+      </button>
+      {quizes.map((quiz, index) => {
+        return <p key={index}>{quiz.title}</p>;
+      })}
+    </div>
+  );
 }

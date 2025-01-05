@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 export function SignUp() {
   const [username, setUsername] = useState("");
-  const { user, setUser } = useContext(UserContext);
+  const { setUser } = useContext(UserContext);
   const navigate = useNavigate();
 
   async function handleSubmit(e) {
@@ -16,7 +16,8 @@ export function SignUp() {
         postUser(username);
         const newUser = await getUser(username);
         if (newUser) {
-          setUser({ username });
+          setUser(username);
+          localStorage.setItem("user", username);
           navigate("/home");
         }
       }
