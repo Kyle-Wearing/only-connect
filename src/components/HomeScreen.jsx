@@ -9,7 +9,7 @@ export function HomeScreen() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    getQuizes(user).then((response) => {
+    getQuizes(localStorage.getItem("user")).then((response) => {
       const quizList = [];
       for (const quiz in response) {
         quizList.push({ title: Object.keys(response[quiz])[0], id: quiz });
@@ -28,7 +28,14 @@ export function HomeScreen() {
         Create a new quiz
       </button>
       {quizes.map((quiz, index) => {
-        return <p key={index}>{quiz.title}</p>;
+        return (
+          <p
+            key={index}
+            onClick={() => navigate("/edit-quiz", { state: { id: quiz.id } })}
+          >
+            {quiz.title}
+          </p>
+        );
       })}
     </div>
   );

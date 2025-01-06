@@ -1,38 +1,21 @@
-import { useContext, useState } from "react";
-import { UserContext } from "../context/UserContext";
-import { postQuiz } from "../../utils";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import { getQuiz, saveQuiz } from "../../utils";
 
-export function CreateQuiz() {
-  const [questions, setQuestions] = useState([
-    { question1: { clue1: "", clue2: "", clue3: "", clue4: "", answer: "" } },
-    { question2: { clue1: "", clue2: "", clue3: "", clue4: "", answer: "" } },
-    { question3: { clue1: "", clue2: "", clue3: "", clue4: "", answer: "" } },
-    { question4: { clue1: "", clue2: "", clue3: "", clue4: "", answer: "" } },
-    { question5: { clue1: "", clue2: "", clue3: "", clue4: "", answer: "" } },
-    { question6: { clue1: "", clue2: "", clue3: "", clue4: "", answer: "" } },
-    { question7: { clue1: "", clue2: "", clue3: "", clue4: "", answer: "" } },
-    { question8: { clue1: "", clue2: "", clue3: "", clue4: "", answer: "" } },
-    { question9: { clue1: "", clue2: "", clue3: "", clue4: "", answer: "" } },
-    { question10: { clue1: "", clue2: "", clue3: "", clue4: "", answer: "" } },
-    { question11: { clue1: "", clue2: "", clue3: "", clue4: "", answer: "" } },
-    { question12: { clue1: "", clue2: "", clue3: "", clue4: "", answer: "" } },
-    { question13: { clue1: "", clue2: "", clue3: "", clue4: "", answer: "" } },
-    { question14: { clue1: "", clue2: "", clue3: "", clue4: "", answer: "" } },
-    { question15: { clue1: "", clue2: "", clue3: "", clue4: "", answer: "" } },
-    { question16: { clue1: "", clue2: "", clue3: "", clue4: "", answer: "" } },
-    { question17: { clue1: "", clue2: "", clue3: "", clue4: "", answer: "" } },
-    { question18: { clue1: "", clue2: "", clue3: "", clue4: "", answer: "" } },
-    { question19: { clue1: "", clue2: "", clue3: "", clue4: "", answer: "" } },
-  ]);
-
+export function EditQuiz() {
+  const { state } = useLocation();
+  const username = localStorage.getItem("user");
   const [title, setTitle] = useState("");
-
-  const { user } = useContext(UserContext);
+  const [questions, setQuestions] = useState([]);
+  useEffect(() => {
+    getQuiz(state.id, username).then((res) => {
+      setQuestions(Object.values(res)[0]);
+      setTitle(Object.keys(res)[0]);
+    });
+  }, []);
 
   function handleSave() {
-    if (title) {
-      postQuiz(questions, user, title);
-    }
+    saveQuiz(questions, username, title, state.id);
   }
 
   return (
@@ -47,9 +30,8 @@ export function CreateQuiz() {
           }}
         ></input>
       </form>
-
-      {questions.map((question, index) => {
-        console.log(question);
+      {questions.map((q, index) => {
+        const question = Object.values(q)[0];
         return (
           <div key={index}>
             <p>question {index + 1}</p>

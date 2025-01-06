@@ -6,15 +6,14 @@ import { LogIn } from "./components/LogIn";
 import { Route, Routes } from "react-router-dom";
 import { SignUp } from "./components/SignUp";
 import { CreateQuiz } from "./components/CreateQuiz";
-import { use } from "react";
+import { EditQuiz } from "./components/EditQuiz";
 
 function App() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const username = localStorage.getItem("user");
-    setUser(username);
-  }, []);
+    setUser(localStorage.getItem("user"));
+  }, [user]);
 
   return (
     <UserContext.Provider value={{ user, setUser }}>
@@ -23,6 +22,7 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/home" element={<HomeScreen />} />
         <Route path="/create-quiz" element={<CreateQuiz />} />
+        <Route path="/edit-quiz" element={<EditQuiz />} />
       </Routes>
     </UserContext.Provider>
   );

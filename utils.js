@@ -32,3 +32,17 @@ export function postQuiz(quiz, username, title) {
   const newPostRef = push(postRef);
   set(newPostRef, { [title]: quiz });
 }
+
+export function getQuiz(id, username) {
+  return get(ref(db, `users/${username}/quizes/${id}`))
+    .then((res) => {
+      return res.val();
+    })
+    .catch((err) => {
+      console.log("get quiz", err);
+    });
+}
+
+export function saveQuiz(quiz, username, title, id) {
+  set(ref(db, `users/${username}/quizes/${id}`), { [title]: quiz });
+}
