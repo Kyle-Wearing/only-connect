@@ -3,6 +3,7 @@ import { Questions } from "./Questions";
 import { getQuiz } from "../../utils";
 import { useLocation } from "react-router-dom";
 import { ImageQuestions } from "./ImageQuestions";
+import { MusicQuestions } from "./MusicQuestions";
 
 export function PlayQuiz() {
   const { state } = useLocation();
@@ -68,6 +69,15 @@ export function PlayQuiz() {
   if (questionNum > 9 && questionNum < 15) {
     return (
       <ImageQuestions
+        questions={questions}
+        questionNum={questionNum}
+        setQuestionNum={setQuestionNum}
+      />
+    );
+  }
+  if (questionNum > 14 && questionNum < 19) {
+    return (
+      <MusicQuestions
         questions={questions}
         questionNum={questionNum}
         setQuestionNum={setQuestionNum}
