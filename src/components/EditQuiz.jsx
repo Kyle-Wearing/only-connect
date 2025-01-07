@@ -24,6 +24,7 @@ export function EditQuiz() {
         <label htmlFor="title">Quiz Name:</label>
         <input
           type="text"
+          id="title"
           value={title}
           onChange={(e) => {
             setTitle(e.target.value);
@@ -40,6 +41,7 @@ export function EditQuiz() {
               <input
                 type="text"
                 name={`${index}.1`}
+                id={`${index}.1`}
                 value={question.clue1}
                 onChange={(e) => {
                   setQuestions((currQuestions) => {
@@ -55,6 +57,7 @@ export function EditQuiz() {
               <input
                 type="text"
                 name={`${index}.2`}
+                id={`${index}.2`}
                 value={question.clue2}
                 onChange={(e) => {
                   setQuestions((currQuestions) => {
@@ -70,6 +73,7 @@ export function EditQuiz() {
               <input
                 type="text"
                 name={`${index}.3`}
+                id={`${index}.3`}
                 value={question.clue3}
                 onChange={(e) => {
                   setQuestions((currQuestions) => {
@@ -85,6 +89,7 @@ export function EditQuiz() {
               <input
                 type="text"
                 name={`${index}.4`}
+                id={`${index}.4`}
                 value={question.clue4}
                 onChange={(e) => {
                   setQuestions((currQuestions) => {
@@ -100,6 +105,7 @@ export function EditQuiz() {
               <input
                 type="text"
                 name={`${index}.answer`}
+                id={`${index}.answer`}
                 value={question.answer}
                 onChange={(e) => {
                   setQuestions((currQuestions) => {

@@ -31,6 +31,7 @@ export function SignUp() {
         <input
           type="text"
           name="signUp"
+          id="signUp"
           value={username}
           onChange={(e) => {
             setUsername(e.target.value);

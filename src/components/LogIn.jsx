@@ -27,6 +27,7 @@ export function LogIn() {
         <input
           type="text"
           name="login"
+          id="login"
           value={username}
           onChange={(e) => {
             setUsername(e.target.value);

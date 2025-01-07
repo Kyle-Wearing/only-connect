@@ -31,7 +31,7 @@ export function HomeScreen() {
         return (
           <p
             key={index}
-            onClick={() => navigate("/edit-quiz", { state: { id: quiz.id } })}
+            onClick={() => navigate("/select-quiz", { state: { id: quiz.id } })}
           >
             {quiz.title}
           </p>
