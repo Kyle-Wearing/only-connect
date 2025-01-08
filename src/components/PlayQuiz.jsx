@@ -66,7 +66,7 @@ export function PlayQuiz() {
       />
     );
   }
-  if (questionNum > 9 && questionNum < 15) {
+  if (questionNum > 9 && questionNum < 16) {
     return (
       <ImageQuestions
         questions={questions}
@@ -75,7 +75,7 @@ export function PlayQuiz() {
       />
     );
   }
-  if (questionNum > 14 && questionNum < 19) {
+  if (questionNum > 15 && questionNum < 19) {
     return (
       <MusicQuestions
         questions={questions}
