@@ -1,11 +1,20 @@
 import { useState } from "react";
 
-export function MusicQuestions({ questions, questionNum, setQuestionNum }) {
+export function MusicQuestions({
+  questions,
+  questionNum,
+  setQuestionNum,
+  turn,
+  setTurn,
+  team1,
+  team2,
+}) {
   const [playVid1, setPlayVid1] = useState(false);
   const [playVid2, setPlayVid2] = useState(false);
   const [playVid3, setPlayVid3] = useState(false);
   const [playVid4, setPlayVid4] = useState(false);
   const [hideAns, setHideAns] = useState(true);
+  const [wrong, setWrong] = useState(false);
 
   function play1(time) {
     setPlayVid1(true);
@@ -35,6 +44,7 @@ export function MusicQuestions({ questions, questionNum, setQuestionNum }) {
   return (
     <div>
       <h1>Music Questions</h1>
+      <h2>{turn}</h2>
       {playVid1 ? (
         <iframe
           width="0"
@@ -162,9 +172,37 @@ export function MusicQuestions({ questions, questionNum, setQuestionNum }) {
               }
               return currNum + 1;
             });
+            setWrong(false);
+            if (!wrong) {
+              setTurn((currTurn) => {
+                if (questionNum === 19) {
+                  return currTurn;
+                }
+                if (currTurn === team1) {
+                  return team2;
+                } else {
+                  return team1;
+                }
+              });
+            }
           }}
         >
           Next question
+        </button>
+        <button
+          disabled={wrong}
+          onClick={() => {
+            setTurn((currTurn) => {
+              if (currTurn === team1) {
+                return team2;
+              } else {
+                return team1;
+              }
+            });
+            setWrong(true);
+          }}
+        >
+          Incorrect Guess
         </button>
       </div>
     </div>

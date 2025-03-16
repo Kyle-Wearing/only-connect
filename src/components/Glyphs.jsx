@@ -1,4 +1,4 @@
-export function Glyphs({ setQuestionNum, choices, setChoises }) {
+export function Glyphs({ setQuestionNum, choices, setChoises, turn }) {
   function randomQuestions() {
     const rand = Math.floor(Math.random() * choices.length);
     const num = choices[rand];
@@ -12,7 +12,8 @@ export function Glyphs({ setQuestionNum, choices, setChoises }) {
 
   return (
     <>
-      <button onClick={randomQuestions}>generate number</button>
+      <h1>{turn} choose a glyph</h1>
+      <button onClick={randomQuestions}>placeholder button</button>
     </>
   );
 }

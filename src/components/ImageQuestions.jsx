@@ -1,12 +1,22 @@
 import { useState } from "react";
 
-export function ImageQuestions({ questions, questionNum, setQuestionNum }) {
+export function ImageQuestions({
+  questions,
+  questionNum,
+  setQuestionNum,
+  turn,
+  setTurn,
+  team1,
+  team2,
+}) {
   const [clueNum, setClueNum] = useState(0);
   const [hideAns, setHideAns] = useState(true);
+  const [wrong, setWrong] = useState(false);
 
   return (
     <div>
       <h1>Image Questions</h1>
+      <h2>{turn}</h2>
       {clueNum > 0 ? (
         <>
           <p>Clue 1:</p>
@@ -77,9 +87,37 @@ export function ImageQuestions({ questions, questionNum, setQuestionNum }) {
             }
             return currNum + 1;
           });
+          setWrong(false);
+          if (!wrong) {
+            setTurn((currTurn) => {
+              if (questionNum === 15) {
+                return currTurn;
+              }
+              if (currTurn === team1) {
+                return team2;
+              } else {
+                return team1;
+              }
+            });
+          }
         }}
       >
         Next question
+      </button>
+      <button
+        disabled={wrong}
+        onClick={() => {
+          setTurn((currTurn) => {
+            if (currTurn === team1) {
+              return team2;
+            } else {
+              return team1;
+            }
+          });
+          setWrong(true);
+        }}
+      >
+        Incorrect Guess
       </button>
     </div>
   );

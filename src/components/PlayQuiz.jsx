@@ -10,6 +10,9 @@ export function PlayQuiz() {
   const { state } = useLocation();
   const [team1, setTeam1] = useState("");
   const [team2, setTeam2] = useState("");
+  const [team1Score, setTeam1Score] = useState(0);
+  const [team2Score, setTeam2Score] = useState(0);
+  const [turn, setTurn] = useState("");
   const [questionNum, setQuestionNum] = useState(null);
   const [teamNames, setTeamNames] = useState(false);
   const [choices, setChoises] = useState([0, 4, 10, 16]);
@@ -30,6 +33,7 @@ export function PlayQuiz() {
             e.preventDefault();
             if (team1 && team2) {
               setTeamNames(true);
+              setTurn(team1);
             }
           }}
         >
@@ -65,33 +69,46 @@ export function PlayQuiz() {
         setQuestionNum={setQuestionNum}
         choices={choices}
         setChoises={setChoises}
+        turn={turn}
       />
     );
   }
   if (questionNum < 10) {
     return (
       <Questions
+        turn={turn}
+        setTurn={setTurn}
         questions={questions}
         questionNum={questionNum}
         setQuestionNum={setQuestionNum}
+        team1={team1}
+        team2={team2}
       />
     );
   }
   if (questionNum > 9 && questionNum < 16) {
     return (
       <ImageQuestions
+        turn={turn}
+        setTurn={setTurn}
         questions={questions}
         questionNum={questionNum}
         setQuestionNum={setQuestionNum}
+        team1={team1}
+        team2={team2}
       />
     );
   }
   if (questionNum > 15 && questionNum < 20) {
     return (
       <MusicQuestions
+        turn={turn}
+        setTurn={setTurn}
         questions={questions}
         questionNum={questionNum}
         setQuestionNum={setQuestionNum}
+        team1={team1}
+        team2={team2}
       />
     );
   }
