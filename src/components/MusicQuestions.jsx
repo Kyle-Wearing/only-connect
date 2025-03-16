@@ -8,13 +8,19 @@ export function MusicQuestions({
   setTurn,
   team1,
   team2,
+  setTeam1Score,
+  setTeam2Score,
+  setCurrentPlayer,
+  currentPlayer,
 }) {
   const [playVid1, setPlayVid1] = useState(false);
   const [playVid2, setPlayVid2] = useState(false);
   const [playVid3, setPlayVid3] = useState(false);
   const [playVid4, setPlayVid4] = useState(false);
+  const [clueNum, setClueNum] = useState(0);
   const [hideAns, setHideAns] = useState(true);
   const [wrong, setWrong] = useState(false);
+  const [right, setRight] = useState(false);
 
   function play1(time) {
     setPlayVid1(true);
@@ -61,6 +67,7 @@ export function MusicQuestions({
         ></iframe>
       ) : null}
       <button
+        disabled={clueNum < 1}
         onClick={() => {
           play1(
             Number(
@@ -87,6 +94,7 @@ export function MusicQuestions({
         ></iframe>
       ) : null}
       <button
+        disabled={clueNum < 2}
         onClick={() => {
           play2(
             Number(
@@ -113,6 +121,7 @@ export function MusicQuestions({
         ></iframe>
       ) : null}
       <button
+        disabled={clueNum < 3}
         onClick={() => {
           play3(
             Number(
@@ -139,6 +148,7 @@ export function MusicQuestions({
         ></iframe>
       ) : null}
       <button
+        disabled={clueNum < 4}
         onClick={() => {
           play4(
             Number(
@@ -157,17 +167,31 @@ export function MusicQuestions({
           </p>
         ) : null}
         <button
+          disabled={clueNum > 3}
           onClick={() => {
-            setHideAns(false);
+            setClueNum((currNum) => {
+              return currNum + 1;
+            });
           }}
         >
-          reveal answer
+          next clue
         </button>
         <button
+          disabled={hideAns}
           onClick={() => {
+            setWrong(false);
+            setRight(false);
+            setClueNum(0);
             setHideAns(true);
             setQuestionNum((currNum) => {
               if (currNum === 19) {
+                if (currentPlayer === team1) {
+                  setCurrentPlayer(team2);
+                  setTurn(team2);
+                } else {
+                  setCurrentPlayer(team1);
+                  setTurn(team1);
+                }
                 return null;
               }
               return currNum + 1;
@@ -187,22 +211,47 @@ export function MusicQuestions({
             }
           }}
         >
-          Next question
+          Next Question
         </button>
         <button
-          disabled={wrong}
+          disabled={right || clueNum === 0}
           onClick={() => {
-            setTurn((currTurn) => {
-              if (currTurn === team1) {
-                return team2;
-              } else {
-                return team1;
-              }
-            });
-            setWrong(true);
+            if (!wrong) {
+              setTurn((currTurn) => {
+                if (currTurn === team1) {
+                  return team2;
+                } else {
+                  return team1;
+                }
+              });
+              setWrong(true);
+            } else if (wrong) {
+              setClueNum(4);
+              setHideAns(false);
+              setRight(true);
+            }
           }}
         >
           Incorrect Guess
+        </button>
+        <button
+          disabled={right || clueNum === 0}
+          onClick={() => {
+            setRight(true);
+            setHideAns(false);
+            setClueNum(4);
+            if (turn === team1) {
+              setTeam1Score((currScore) => {
+                return currScore + (5 - clueNum);
+              });
+            } else {
+              setTeam2Score((currScore) => {
+                return currScore + (5 - clueNum);
+              });
+            }
+          }}
+        >
+          Correct Guess
         </button>
       </div>
     </div>

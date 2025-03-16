@@ -8,10 +8,15 @@ export function Questions({
   setTurn,
   team1,
   team2,
+  setTeam1Score,
+  setTeam2Score,
+  setCurrentPlayer,
+  currentPlayer,
 }) {
   const [clueNum, setClueNum] = useState(0);
   const [hideAns, setHideAns] = useState(true);
   const [wrong, setWrong] = useState(false);
+  const [right, setRight] = useState(false);
 
   return (
     <div>
@@ -43,6 +48,7 @@ export function Questions({
         </p>
       ) : null}
       <button
+        disabled={clueNum > 3}
         onClick={() => {
           setClueNum((currNum) => {
             return currNum + 1;
@@ -52,24 +58,25 @@ export function Questions({
         next clue
       </button>
       <button
+        disabled={hideAns}
         onClick={() => {
-          setHideAns(false);
-          setClueNum(4);
-        }}
-      >
-        reveal answer
-      </button>
-      <button
-        onClick={() => {
+          setWrong(false);
+          setRight(false);
           setClueNum(0);
           setHideAns(true);
           setQuestionNum((currNum) => {
             if (currNum === 3 || currNum === 9) {
+              if (currentPlayer === team1) {
+                setCurrentPlayer(team2);
+                setTurn(team2);
+              } else {
+                setCurrentPlayer(team1);
+                setTurn(team1);
+              }
               return null;
             }
             return currNum + 1;
           });
-
           setWrong(false);
           if (!wrong) {
             setTurn((currTurn) => {
@@ -85,22 +92,47 @@ export function Questions({
           }
         }}
       >
-        Next question
+        Next Question
       </button>
       <button
-        disabled={wrong}
+        disabled={right || clueNum === 0}
         onClick={() => {
-          setTurn((currTurn) => {
-            if (currTurn === team1) {
-              return team2;
-            } else {
-              return team1;
-            }
-          });
-          setWrong(true);
+          if (!wrong) {
+            setTurn((currTurn) => {
+              if (currTurn === team1) {
+                return team2;
+              } else {
+                return team1;
+              }
+            });
+            setWrong(true);
+          } else if (wrong) {
+            setClueNum(4);
+            setHideAns(false);
+            setRight(true);
+          }
         }}
       >
         Incorrect Guess
+      </button>
+      <button
+        disabled={right || clueNum === 0}
+        onClick={() => {
+          setRight(true);
+          setHideAns(false);
+          setClueNum(4);
+          if (turn === team1) {
+            setTeam1Score((currScore) => {
+              return currScore + (5 - clueNum);
+            });
+          } else {
+            setTeam2Score((currScore) => {
+              return currScore + (5 - clueNum);
+            });
+          }
+        }}
+      >
+        Correct Guess
       </button>
     </div>
   );

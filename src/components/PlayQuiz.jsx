@@ -16,6 +16,7 @@ export function PlayQuiz() {
   const [questionNum, setQuestionNum] = useState(null);
   const [teamNames, setTeamNames] = useState(false);
   const [choices, setChoises] = useState([0, 4, 10, 16]);
+  const [currentPlayer, setCurrentPlayer] = useState("");
 
   const username = localStorage.getItem("user");
   const [questions, setQuestions] = useState([]);
@@ -34,6 +35,7 @@ export function PlayQuiz() {
             if (team1 && team2) {
               setTeamNames(true);
               setTurn(team1);
+              setCurrentPlayer(team1);
             }
           }}
         >
@@ -65,12 +67,17 @@ export function PlayQuiz() {
   }
   if (questionNum === null) {
     return (
-      <Glyphs
-        setQuestionNum={setQuestionNum}
-        choices={choices}
-        setChoises={setChoises}
-        turn={turn}
-      />
+      <>
+        <p>
+          {team1}: {team1Score} and {team2}: {team2Score}
+        </p>
+        <Glyphs
+          setQuestionNum={setQuestionNum}
+          choices={choices}
+          setChoises={setChoises}
+          turn={turn}
+        />
+      </>
     );
   }
   if (questionNum < 10) {
@@ -83,6 +90,10 @@ export function PlayQuiz() {
         setQuestionNum={setQuestionNum}
         team1={team1}
         team2={team2}
+        setTeam1Score={setTeam1Score}
+        setTeam2Score={setTeam2Score}
+        setCurrentPlayer={setCurrentPlayer}
+        currentPlayer={currentPlayer}
       />
     );
   }
@@ -96,6 +107,10 @@ export function PlayQuiz() {
         setQuestionNum={setQuestionNum}
         team1={team1}
         team2={team2}
+        setTeam1Score={setTeam1Score}
+        setTeam2Score={setTeam2Score}
+        setCurrentPlayer={setCurrentPlayer}
+        currentPlayer={currentPlayer}
       />
     );
   }
@@ -109,6 +124,10 @@ export function PlayQuiz() {
         setQuestionNum={setQuestionNum}
         team1={team1}
         team2={team2}
+        setTeam1Score={setTeam1Score}
+        setTeam2Score={setTeam2Score}
+        setCurrentPlayer={setCurrentPlayer}
+        currentPlayer={currentPlayer}
       />
     );
   }
