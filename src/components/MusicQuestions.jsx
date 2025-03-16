@@ -157,6 +157,9 @@ export function MusicQuestions({ questions, questionNum, setQuestionNum }) {
           onClick={() => {
             setHideAns(true);
             setQuestionNum((currNum) => {
+              if (currNum === 19) {
+                return null;
+              }
               return currNum + 1;
             });
           }}

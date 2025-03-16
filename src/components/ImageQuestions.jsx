@@ -7,7 +7,6 @@ export function ImageQuestions({ questions, questionNum, setQuestionNum }) {
   return (
     <div>
       <h1>Image Questions</h1>
-      {questionNum < 4 ? <h1>Connections</h1> : <h1>Sequence</h1>}
       {clueNum > 0 ? (
         <>
           <p>Clue 1:</p>
@@ -73,6 +72,9 @@ export function ImageQuestions({ questions, questionNum, setQuestionNum }) {
           setClueNum(0);
           setHideAns(true);
           setQuestionNum((currNum) => {
+            if (currNum === 15) {
+              return null;
+            }
             return currNum + 1;
           });
         }}

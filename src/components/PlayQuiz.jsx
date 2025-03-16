@@ -4,13 +4,15 @@ import { getQuiz } from "../../utils";
 import { useLocation } from "react-router-dom";
 import { ImageQuestions } from "./ImageQuestions";
 import { MusicQuestions } from "./MusicQuestions";
+import { Glyphs } from "./Glyphs";
 
 export function PlayQuiz() {
   const { state } = useLocation();
   const [team1, setTeam1] = useState("");
   const [team2, setTeam2] = useState("");
-  const [questionNum, setQuestionNum] = useState(0);
+  const [questionNum, setQuestionNum] = useState(null);
   const [teamNames, setTeamNames] = useState(false);
+  const [choices, setChoises] = useState([0, 4, 10, 16]);
 
   const username = localStorage.getItem("user");
   const [questions, setQuestions] = useState([]);
@@ -57,6 +59,15 @@ export function PlayQuiz() {
       </div>
     );
   }
+  if (questionNum === null) {
+    return (
+      <Glyphs
+        setQuestionNum={setQuestionNum}
+        choices={choices}
+        setChoises={setChoises}
+      />
+    );
+  }
   if (questionNum < 10) {
     return (
       <Questions
@@ -75,7 +86,7 @@ export function PlayQuiz() {
       />
     );
   }
-  if (questionNum > 15 && questionNum < 19) {
+  if (questionNum > 15 && questionNum < 20) {
     return (
       <MusicQuestions
         questions={questions}

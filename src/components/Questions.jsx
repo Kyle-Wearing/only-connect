@@ -54,6 +54,9 @@ export function Questions({ questions, questionNum, setQuestionNum }) {
           setClueNum(0);
           setHideAns(true);
           setQuestionNum((currNum) => {
+            if (currNum === 3 || currNum === 9) {
+              return null;
+            }
             return currNum + 1;
           });
         }}
