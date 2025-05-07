@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "../styles/Home.css";
+import "../styles/Default.css";
 
 export function Default() {
   const navigate = useNavigate();
@@ -16,6 +16,9 @@ export function Default() {
           <button onClick={() => navigate("/login")}>Log In</button>
           <button className="secondary" onClick={() => navigate("/signup")}>
             Sign Up
+          </button>
+          <button className="guest-button" onClick={() => navigate("/home")}>
+            Continue as Guest
           </button>
         </div>
       </div>

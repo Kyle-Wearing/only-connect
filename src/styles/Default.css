@@ -69,3 +69,19 @@ button.secondary {
 button.secondary:hover {
   background-color: #ecf5fb;
 }
+
+.guest-button {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 2px solid #3498db;
+  background-color: transparent;
+  color: #3498db;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.guest-button:hover {
+  background-color: #ecf5fb;
+}

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../styles/Login.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { logIn } from "../../api";
@@ -12,6 +12,7 @@ export function Login() {
   });
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
@@ -23,6 +24,7 @@ export function Login() {
     const user = await logIn(credentials);
     if (user.status === 200) {
       sessionStorage.setItem("user_id", user.userId);
+      navigate("/home");
     } else {
       setError(user.msg);
     }
@@ -74,6 +76,9 @@ export function Login() {
         </button>
         <p className="login-switch">
           Don't have an account? <Link to="/sign-up">Sign up</Link>
+        </p>
+        <p className="signup-switch">
+          <Link to="/home">Continue as Guest?</Link>
         </p>
       </form>
     </div>

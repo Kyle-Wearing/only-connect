@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../styles/SignUp.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { signUp } from "../../api";
@@ -13,6 +13,7 @@ export function SignUp() {
   });
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -25,6 +26,7 @@ export function SignUp() {
       const response = await signUp(formData);
       if (response.status === 201) {
         sessionStorage.setItem("user_id", response.user_id);
+        navigate("/home");
       } else if (response.status === 409) {
         setError("Username Already Exists");
       } else {
@@ -95,6 +97,9 @@ export function SignUp() {
         </button>
         <p className="signup-switch">
           Already have an account? <Link to="/login">Log in</Link>
+        </p>
+        <p className="signup-switch">
+          <Link to="/home">Continue as Guest?</Link>
         </p>
       </form>
     </div>
