@@ -1,3 +1,14 @@
+import { useNavigate } from "react-router-dom";
+
 export function Home() {
-  return <h1></h1>;
+  const navigate = useNavigate();
+  return (
+    <button
+      onClick={() => {
+        navigate("/login");
+      }}
+    >
+      Button
+    </button>
+  );
 }

@@ -1,0 +1,80 @@
+import React, { useState } from "react";
+import "../styles/Login.css";
+import { Link } from "react-router-dom";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { logIn } from "../../api";
+
+export function Login() {
+  const [credentials, setCredentials] = useState({
+    name: "",
+    password: "",
+  });
+  const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleChange = (e) => {
+    setCredentials({ ...credentials, [e.target.name]: e.target.value });
+    setError("");
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const user = await logIn(credentials);
+    if (user.status === 200) {
+      sessionStorage.setItem("user_id", user.userId);
+    } else {
+      setError(user.msg);
+    }
+  };
+
+  return (
+    <div className="login-container">
+      <form className="login-form" onSubmit={handleSubmit}>
+        <h2 className="login-title">Login</h2>
+
+        <div className="login-field">
+          <label htmlFor="name">Name</label>
+          <div className="password-wrapper">
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={credentials.name}
+              onChange={handleChange}
+              required
+            />
+          </div>
+        </div>
+
+        <div className="login-field">
+          <label htmlFor="password">Password</label>
+          <div className="password-wrapper">
+            <input
+              type={showPassword ? "text" : "password"}
+              id="password"
+              name="password"
+              value={credentials.password}
+              onChange={handleChange}
+              required
+            />
+            <button
+              type="button"
+              className="toggle-password"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+            </button>
+          </div>
+        </div>
+        {error ? <p className="login-error">{error}</p> : null}
+        <button type="submit" className="login-button">
+          Log In
+        </button>
+        <p className="login-switch">
+          Don't have an account? <Link to="/sign-up">Sign up</Link>
+        </p>
+      </form>
+    </div>
+  );
+}
