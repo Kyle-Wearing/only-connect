@@ -1,20 +1,18 @@
+import { useNavigate } from "react-router-dom";
+import { getQuizzesByUserId } from "../../api";
 import { useEffect, useState } from "react";
-import { getQuizzes } from "../../api";
-import { Link, useNavigate } from "react-router-dom";
 import { LoadingSpinner } from "./LoadingScreen";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
-import "../styles/Home.css";
+import "../styles/Profile.css";
 
-export function Home() {
+export function Profile() {
+  const navigate = useNavigate();
+  const userId = sessionStorage.getItem("user_id");
   const [quizzes, setQuizzes] = useState([]);
   const [loading, setLoading] = useState(true);
-  const userId = sessionStorage.getItem("user_id");
-  const navigate = useNavigate();
 
   async function apiCall() {
-    const fetchedQuizes = await getQuizzes();
-    setQuizzes(fetchedQuizes);
+    const fetchedQuizzes = await getQuizzesByUserId(userId);
+    setQuizzes(fetchedQuizzes);
     setLoading(false);
   }
 
@@ -23,18 +21,28 @@ export function Home() {
   }, []);
 
   return (
-    <div className="home-container">
-      {userId ? (
-        <button onClick={() => navigate("/profile")} className="profile-button">
-          <FontAwesomeIcon icon={faUser} style={{ marginRight: "8px" }} />
-          Profile
+    <div className="profile-container">
+      <div className="button-bar">
+        <button
+          className="back-button"
+          onClick={() => {
+            navigate("/home");
+          }}
+        >
+          Home
         </button>
-      ) : (
-        <button onClick={() => navigate("/login")} className="profile-button">
-          Log In
+        <button
+          className="logout-button"
+          onClick={() => {
+            sessionStorage.removeItem("user_id");
+            navigate("/home");
+          }}
+        >
+          Log out
         </button>
-      )}
-      <div className="home-card">
+      </div>
+
+      <div className="profile-card">
         <h1>Quizzes</h1>
         {loading ? (
           <LoadingSpinner />

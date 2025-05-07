@@ -1,0 +1,55 @@
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  color: white;
+  padding: 2rem;
+  overflow: hidden;
+}
+
+.profile-card {
+  background-color: white;
+  color: #333;
+  padding: 2rem 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+}
+
+.quiz-list li {
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: background-color 0.2s ease;
+}
+
+.quiz-list li:hover {
+  background-color: #f0f8ff;
+}
+
+.button-bar {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.button-bar button {
+  background-color: #3498db;
+  border: none;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button-bar button:hover {
+  background-color: #2980b9;
+}

@@ -61,11 +61,20 @@ export async function getQuizzes() {
     });
 }
 
-export async function createQuiz(quizName) {
+export async function getQuizzesByUserId(userId) {
   return api
-    .post("/quizzes", {
-      quiz_name: quizName,
+    .get(`/users/quizzes/${userId}`)
+    .then((response) => {
+      return response.data.items;
     })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+export async function getQuizByQuizId(quizId) {
+  return api
+    .get(`/quizzes/${quizId}`)
     .then((response) => {
       console.log(response);
     })
