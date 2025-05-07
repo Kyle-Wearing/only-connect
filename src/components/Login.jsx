@@ -61,6 +61,7 @@ export function Login() {
             <button
               type="button"
               className="toggle-password"
+              aria-label={showPassword ? "Hide password" : "Show password"}
               onClick={() => setShowPassword(!showPassword)}
             >
               <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
