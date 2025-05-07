@@ -1,0 +1,7 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  background: linear-gradient(135deg, #2c3e50, #3498db);
+}

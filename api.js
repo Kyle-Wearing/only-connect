@@ -72,9 +72,53 @@ export async function getQuizzesByUserId(userId) {
     });
 }
 
-export async function getQuizByQuizId(quizId) {
+export async function getSequenceQuestions(quizId) {
   return api
-    .get(`/quizzes/${quizId}`)
+    .get(`/quizzes/${quizId}/sequence`)
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+export async function getConnectionQuestions(quizId) {
+  return api
+    .get(`/quizzes/${quizId}/connection`)
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+export async function getImageQuestions(quizId) {
+  return api
+    .get(`/quizzes/${quizId}/image`)
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+export async function getMusicQuestions(quizId) {
+  return api
+    .get(`/quizzes/${quizId}/music`)
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+export async function getVowelsQuestions(quizId) {
+  return api
+    .get(`/quizzes/${quizId}/missing-vowels`)
     .then((response) => {
       console.log(response);
     })

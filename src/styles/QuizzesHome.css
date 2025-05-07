@@ -1,13 +1,14 @@
-.auth-container {
+.container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  background: linear-gradient(135deg, #2c3e50, #3498db);
   color: white;
   padding: 1rem;
 }
 
-.auth-card {
+.card {
   background-color: white;
   padding: 2rem 2.5rem;
   border-radius: 12px;
@@ -15,27 +16,16 @@
   text-align: center;
   width: 100%;
   max-width: 400px;
-}
-
-.auth-card h2 {
-  margin-bottom: 1rem;
-  font-size: 1.75rem;
   color: #333;
 }
 
-.auth-subtext {
-  font-size: 1rem;
-  color: #555;
-  margin-bottom: 2rem;
-}
-
-.auth-button-group {
+.button-group {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  margin-top: 1.5rem;
 }
-
-.auth-button {
+.play-button {
   padding: 0.75rem 1rem;
   font-size: 1rem;
   border-radius: 8px;
@@ -47,11 +37,11 @@
   transition: background-color 0.3s ease;
 }
 
-.auth-button:hover {
+.play-button:hover {
   background-color: #2980b9;
 }
 
-.auth-button-secondary {
+.edit-button {
   background-color: transparent;
   color: #3498db;
   border: 2px solid #3498db;
@@ -64,11 +54,11 @@
   transition: background-color 0.3s ease;
 }
 
-.auth-button-secondary:hover {
+.edit-button:hover {
   background-color: #ecf5fb;
 }
 
-.guest-button {
+.back-button {
   padding: 0.75rem 1rem;
   font-size: 1rem;
   border-radius: 8px;
@@ -80,6 +70,6 @@
   transition: background-color 0.3s ease;
 }
 
-.guest-button:hover {
+.back-button:hover {
   background-color: #ecf5fb;
 }
