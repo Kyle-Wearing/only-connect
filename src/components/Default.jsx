@@ -13,8 +13,13 @@ export function Default() {
           Create and challenge others with your own quiz connections.
         </p>
         <div className="auth-button-group">
-          <button onClick={() => navigate("/login")}>Log In</button>
-          <button className="secondary" onClick={() => navigate("/signup")}>
+          <button className="auth-button" onClick={() => navigate("/login")}>
+            Log In
+          </button>
+          <button
+            className="auth-button-secondary "
+            onClick={() => navigate("/signup")}
+          >
             Sign Up
           </button>
           <button className="guest-button" onClick={() => navigate("/home")}>

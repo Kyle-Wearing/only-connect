@@ -2,7 +2,8 @@ import axios from "axios";
 import bcrypt from "bcryptjs";
 
 const api = axios.create({
-  baseURL: "https://apex.oracle.com/pls/apex/onlyconnect/api/",
+  baseURL: "https://apex.oracle.com/pls/apex/onlyconnect/api",
+  timeout: 5000,
 });
 
 async function hashPasswords(password) {
@@ -45,5 +46,29 @@ export async function signUp({ name, password }) {
     .catch((err) => {
       console.log(err);
       return { status: err.response.status };
+    });
+}
+
+export async function getQuizzes() {
+  return api
+    .get("/quizzes")
+    .then((response) => {
+      return response;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+export async function createQuiz(quizName) {
+  return api
+    .post("/quizzes", {
+      quiz_name: quizName,
+    })
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((err) => {
+      console.log(err);
     });
 }
