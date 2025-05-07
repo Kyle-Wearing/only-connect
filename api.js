@@ -2,7 +2,8 @@ import axios from "axios";
 import bcrypt from "bcryptjs";
 
 const api = axios.create({
-  baseURL: "https://apex.oracle.com/pls/apex/onlyconnect/api",
+  baseURL: "https://apex.oracle.com/pls/apex/onlyconnect/api/",
+
   timeout: 5000,
 });
 
@@ -53,7 +54,7 @@ export async function getQuizzes() {
   return api
     .get("/quizzes")
     .then((response) => {
-      return response;
+      return response.data.items;
     })
     .catch((err) => {
       console.log(err);
