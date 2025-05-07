@@ -76,7 +76,7 @@ export async function getSequenceQuestions(quizId) {
   return api
     .get(`/quizzes/${quizId}/sequence`)
     .then((response) => {
-      console.log(response);
+      return response.data.items;
     })
     .catch((err) => {
       console.log(err);
@@ -85,9 +85,9 @@ export async function getSequenceQuestions(quizId) {
 
 export async function getConnectionQuestions(quizId) {
   return api
-    .get(`/quizzes/${quizId}/connection`)
+    .get(`/quizzes/${quizId}/connections`)
     .then((response) => {
-      console.log(response);
+      return response.data.items;
     })
     .catch((err) => {
       console.log(err);
@@ -96,9 +96,9 @@ export async function getConnectionQuestions(quizId) {
 
 export async function getImageQuestions(quizId) {
   return api
-    .get(`/quizzes/${quizId}/image`)
+    .get(`/quizzes/${quizId}/images`)
     .then((response) => {
-      console.log(response);
+      return response.data.items;
     })
     .catch((err) => {
       console.log(err);
@@ -109,7 +109,7 @@ export async function getMusicQuestions(quizId) {
   return api
     .get(`/quizzes/${quizId}/music`)
     .then((response) => {
-      console.log(response);
+      return response.data.items;
     })
     .catch((err) => {
       console.log(err);
@@ -120,7 +120,7 @@ export async function getVowelsQuestions(quizId) {
   return api
     .get(`/quizzes/${quizId}/missing-vowels`)
     .then((response) => {
-      console.log(response);
+      return response.data.items;
     })
     .catch((err) => {
       console.log(err);

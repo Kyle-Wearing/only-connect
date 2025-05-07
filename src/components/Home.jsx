@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getQuizzes } from "../../api";
 import { Link, useNavigate } from "react-router-dom";
-import { LoadingSpinner } from "./LoadingScreen";
+import { LoadingSpinner } from "./LoadingSpinner";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import "../styles/Home.css";

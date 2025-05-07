@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { getQuizzesByUserId } from "../../api";
 import { useEffect, useState } from "react";
-import { LoadingSpinner } from "./LoadingScreen";
+import { LoadingSpinner } from "./LoadingSpinner";
 import "../styles/Profile.css";
 
 export function Profile() {

@@ -4,15 +4,15 @@ import "../styles/QuizzesHome.css";
 export function QuizzesHome() {
   const { quiz_id } = useParams();
   const location = useLocation();
-  const navigate = useNavigate();
   const { quiz_name } = location.state;
+  const navigate = useNavigate();
 
   function handleEdit() {
-    navigate(`/quizzes/${quiz_id}/edit`);
+    navigate(`/quizzes/${quiz_id}/edit`, { state: { quiz_name: quiz_name } });
   }
 
   function handlePlay() {
-    navigate(`/quizzes/${quiz_id}/play`);
+    navigate(`/quizzes/${quiz_id}/play`, { state: { quiz_name: quiz_name } });
   }
 
   return (
