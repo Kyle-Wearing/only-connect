@@ -1,26 +1,31 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+body {
+  background: linear-gradient(135deg, #2c3e50, #3498db);
+  background-attachment: fixed;
+}
+
 .edit-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 100vh;
   padding: 2rem;
-  background: linear-gradient(135deg, #2c3e50, #3498db);
-  overflow: hidden;
+  overflow-y: auto;
+  box-sizing: border-box;
 }
 
 .question-list {
-  flex: 1;
   width: 100%;
   max-width: 700px;
-  overflow-y: auto;
-  padding-right: 1rem;
-  margin-top: 1rem;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-.question-list::-webkit-scrollbar {
-  display: none;
+  max-height: 80vh;
+  margin: 150px;
 }
 
 .question-form {
