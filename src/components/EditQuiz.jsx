@@ -30,9 +30,9 @@ export function EditQuiz() {
     );
   }
 
-  const handleInputChange = (e, questionIndex, key) => {
+  const handleInputChange = (e, type, questionIndex, key) => {
     const updatedQuestions = { ...questions };
-    updatedQuestions.sequence[questionIndex][key] = e.target.value;
+    updatedQuestions[type][questionIndex][key] = e.target.value;
     setQuestions(updatedQuestions);
   };
 
@@ -49,7 +49,7 @@ export function EditQuiz() {
                 Clue 1:
                 <input
                   onChange={(e) => {
-                    handleInputChange(e, index, "clue_1");
+                    handleInputChange(e, "sequence", index, "clue_1");
                   }}
                   value={question.clue_1}
                 />
@@ -58,7 +58,7 @@ export function EditQuiz() {
                 Clue 2:
                 <input
                   onChange={(e) => {
-                    handleInputChange(e, index, "clue_2");
+                    handleInputChange(e, "sequence", index, "clue_2");
                   }}
                   value={question.clue_2}
                 />
@@ -67,7 +67,7 @@ export function EditQuiz() {
                 Clue 3:
                 <input
                   onChange={(e) => {
-                    handleInputChange(e, index, "clue_3");
+                    handleInputChange(e, "sequence", index, "clue_3");
                   }}
                   value={question.clue_3}
                 />
@@ -76,7 +76,7 @@ export function EditQuiz() {
                 Clue 4:
                 <input
                   onChange={(e) => {
-                    handleInputChange(e, index, "clue_4");
+                    handleInputChange(e, "sequence", index, "clue_4");
                   }}
                   value={question.clue_4}
                 />
@@ -85,7 +85,7 @@ export function EditQuiz() {
                 Answer:
                 <input
                   onChange={(e) => {
-                    handleInputChange(e, index, "answer");
+                    handleInputChange(e, "sequence", index, "answer");
                   }}
                   value={question.answer}
                 />
@@ -103,7 +103,7 @@ export function EditQuiz() {
                 Clue 1:
                 <input
                   onChange={(e) => {
-                    handleInputChange(e, index, "clue_1");
+                    handleInputChange(e, "connections", index, "clue_1");
                   }}
                   value={question.clue_1}
                 />
@@ -112,7 +112,7 @@ export function EditQuiz() {
                 Clue 2:
                 <input
                   onChange={(e) => {
-                    handleInputChange(e, index, "clue_2");
+                    handleInputChange(e, "connections", index, "clue_2");
                   }}
                   value={question.clue_2}
                 />
@@ -121,7 +121,7 @@ export function EditQuiz() {
                 Clue 3:
                 <input
                   onChange={(e) => {
-                    handleInputChange(e, index, "clue_3");
+                    handleInputChange(e, "connections", index, "clue_3");
                   }}
                   value={question.clue_3}
                 />
@@ -130,7 +130,7 @@ export function EditQuiz() {
                 Clue 4:
                 <input
                   onChange={(e) => {
-                    handleInputChange(e, index, "clue_4");
+                    handleInputChange(e, "connections", index, "clue_4");
                   }}
                   value={question.clue_4}
                 />
@@ -139,7 +139,7 @@ export function EditQuiz() {
                 Answer:
                 <input
                   onChange={(e) => {
-                    handleInputChange(e, index, "answer");
+                    handleInputChange(e, "connections", index, "answer");
                   }}
                   value={question.answer}
                 />
@@ -157,7 +157,7 @@ export function EditQuiz() {
                 Clue 1:
                 <input
                   onChange={(e) => {
-                    handleInputChange(e, index, "clue_1");
+                    handleInputChange(e, "image", index, "clue_1");
                   }}
                   value={question.clue_1}
                 />
@@ -166,7 +166,7 @@ export function EditQuiz() {
                 Clue 2:
                 <input
                   onChange={(e) => {
-                    handleInputChange(e, index, "clue_2");
+                    handleInputChange(e, "image", index, "clue_2");
                   }}
                   value={question.clue_2}
                 />
@@ -175,7 +175,7 @@ export function EditQuiz() {
                 Clue 3:
                 <input
                   onChange={(e) => {
-                    handleInputChange(e, index, "clue_3");
+                    handleInputChange(e, "image", index, "clue_3");
                   }}
                   value={question.clue_3}
                 />
@@ -184,7 +184,7 @@ export function EditQuiz() {
                 Clue 4:
                 <input
                   onChange={(e) => {
-                    handleInputChange(e, index, "clue_4");
+                    handleInputChange(e, "image", index, "clue_4");
                   }}
                   value={question.clue_4}
                 />
@@ -193,7 +193,7 @@ export function EditQuiz() {
                 Answer:
                 <input
                   onChange={(e) => {
-                    handleInputChange(e, index, "answer");
+                    handleInputChange(e, "image", index, "answer");
                   }}
                   value={question.answer}
                 />
@@ -211,7 +211,7 @@ export function EditQuiz() {
                 Clue 1 URL:
                 <input
                   onChange={(e) => {
-                    handleInputChange(e, index, "clue_1_url");
+                    handleInputChange(e, "music", index, "clue_1_url");
                   }}
                   value={question.clue_1_url}
                 />
@@ -220,7 +220,7 @@ export function EditQuiz() {
                 Clue 1 Start:
                 <input
                   onChange={(e) => {
-                    handleInputChange(e, index, "clue_1_start");
+                    handleInputChange(e, "music", index, "clue_1_start");
                   }}
                   value={question.clue_1_start}
                 />
@@ -229,7 +229,7 @@ export function EditQuiz() {
                 Clue 1 Duration:
                 <input
                   onChange={(e) => {
-                    handleInputChange(e, index, "clue_1_duration");
+                    handleInputChange(e, "music", index, "clue_1_duration");
                   }}
                   value={question.clue_1_duration}
                 />
@@ -238,7 +238,7 @@ export function EditQuiz() {
                 Clue 2 URL:
                 <input
                   onChange={(e) => {
-                    handleInputChange(e, index, "clue_2_url");
+                    handleInputChange(e, "music", index, "clue_2_url");
                   }}
                   value={question.clue_2_url}
                 />
@@ -247,7 +247,7 @@ export function EditQuiz() {
                 Clue 2 Start:
                 <input
                   onChange={(e) => {
-                    handleInputChange(e, index, "clue_2_start");
+                    handleInputChange(e, "music", index, "clue_2_start");
                   }}
                   value={question.clue_2_start}
                 />
@@ -256,7 +256,7 @@ export function EditQuiz() {
                 Clue 2 Duration:
                 <input
                   onChange={(e) => {
-                    handleInputChange(e, index, "clue_2_duration");
+                    handleInputChange(e, "music", index, "clue_2_duration");
                   }}
                   value={question.clue_2_duration}
                 />
@@ -265,7 +265,7 @@ export function EditQuiz() {
                 Clue 3 URL:
                 <input
                   onChange={(e) => {
-                    handleInputChange(e, index, "clue_3_url");
+                    handleInputChange(e, "music", index, "clue_3_url");
                   }}
                   value={question.clue_3_url}
                 />
@@ -274,7 +274,7 @@ export function EditQuiz() {
                 Clue 3 Start:
                 <input
                   onChange={(e) => {
-                    handleInputChange(e, index, "clue_3_start");
+                    handleInputChange(e, "music", index, "clue_3_start");
                   }}
                   value={question.clue_3_start}
                 />
@@ -283,7 +283,7 @@ export function EditQuiz() {
                 Clue 3 Duration:
                 <input
                   onChange={(e) => {
-                    handleInputChange(e, index, "clue_3_duration");
+                    handleInputChange(e, "music", index, "clue_3_duration");
                   }}
                   value={question.clue_3_duration}
                 />
@@ -292,7 +292,7 @@ export function EditQuiz() {
                 Clue 4 URL:
                 <input
                   onChange={(e) => {
-                    handleInputChange(e, index, "clue_4_url");
+                    handleInputChange(e, "music", index, "clue_4_url");
                   }}
                   value={question.clue_4_url}
                 />
@@ -301,7 +301,7 @@ export function EditQuiz() {
                 Clue 4 Start:
                 <input
                   onChange={(e) => {
-                    handleInputChange(e, index, "clue_4_start");
+                    handleInputChange(e, "music", index, "clue_4_start");
                   }}
                   value={question.clue_4_start}
                 />
@@ -310,7 +310,7 @@ export function EditQuiz() {
                 Clue 4 Duration:
                 <input
                   onChange={(e) => {
-                    handleInputChange(e, index, "clue_4_duration");
+                    handleInputChange(e, "music", index, "clue_4_duration");
                   }}
                   value={question.clue_4_duration}
                 />
@@ -319,7 +319,7 @@ export function EditQuiz() {
                 Answer:
                 <input
                   onChange={(e) => {
-                    handleInputChange(e, index, "answer");
+                    handleInputChange(e, "music", index, "answer");
                   }}
                   value={question.answer}
                 />
@@ -329,7 +329,7 @@ export function EditQuiz() {
         ))}
 
         <h2>Missing Vowels</h2>
-        {questions.connections.map((question, index) => (
+        {questions.vowels.map((question, index) => (
           <div key={index} className="question-form">
             <h3>Question {index + 1}</h3>
             <form>
@@ -337,7 +337,7 @@ export function EditQuiz() {
                 Answer:
                 <input
                   onChange={(e) => {
-                    handleInputChange(e, index, "answer");
+                    handleInputChange(e, "vowels", index, "answer");
                   }}
                   value={question.answer}
                 />
