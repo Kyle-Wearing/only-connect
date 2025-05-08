@@ -13,7 +13,6 @@ export function EditQuiz() {
 
   async function apiCall() {
     const fetchedQuestions = await getAllQuestions(quiz_id);
-    console.log(fetchedQuestions);
     setQuestions(fetchedQuestions);
     setLoading(false);
   }

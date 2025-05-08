@@ -126,3 +126,117 @@ export async function getVowelsQuestions(quizId) {
       console.log(err);
     });
 }
+
+export async function updateConnectionQuestions(quizId, question) {
+  const { clue_1, clue_2, clue_3, clue_4, answer, question_id } = question;
+  return api
+    .put(`/quizzes/${quizId}/connections`, {
+      clue_1,
+      clue_2,
+      clue_3,
+      clue_4,
+      answer,
+      question_id,
+    })
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+export async function updateSequenceQuestions(quizId, question) {
+  const { clue_1, clue_2, clue_3, clue_4, answer, question_id } = question;
+  return api
+    .put(`/quizzes/${quizId}/sequence`, {
+      clue_1,
+      clue_2,
+      clue_3,
+      clue_4,
+      answer,
+      question_id,
+    })
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+export async function updateImageQuestions(quizId, question) {
+  const { clue_1, clue_2, clue_3, clue_4, answer, question_id } = question;
+  return api
+    .put(`/quizzes/${quizId}/images`, {
+      clue_1,
+      clue_2,
+      clue_3,
+      clue_4,
+      answer,
+      question_id,
+    })
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+export async function updateMusicQuestions(quizId, question) {
+  const {
+    clue_1_url,
+    clue_1_start,
+    clue_1_duration,
+    clue_2_url,
+    clue_2_start,
+    clue_2_duration,
+    clue_3_url,
+    clue_3_start,
+    clue_3_duration,
+    clue_4_url,
+    clue_4_start,
+    clue_4_duration,
+    answer,
+    question_id,
+  } = question;
+  return api
+    .put(`/quizzes/${quizId}/music`, {
+      clue_1_url,
+      clue_1_start,
+      clue_1_duration,
+      clue_2_url,
+      clue_2_start,
+      clue_2_duration,
+      clue_3_url,
+      clue_3_start,
+      clue_3_duration,
+      clue_4_url,
+      clue_4_start,
+      clue_4_duration,
+      answer,
+      question_id,
+    })
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+export async function updateVowelQuestions(quizId, question) {
+  const { answer, question_id } = question;
+  return api
+    .put(`/quizzes/${quizId}/missing-vowels`, {
+      answer,
+      question_id,
+    })
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
