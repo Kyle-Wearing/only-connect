@@ -48,6 +48,11 @@ export function EditQuiz() {
       setTimeout(() => {
         setSuccess(false);
       }, 5000);
+    } else {
+      setError(success.msg);
+      setTimeout(() => {
+        setError("");
+      }, 5000);
     }
     setSaving(false);
   }
@@ -63,6 +68,7 @@ export function EditQuiz() {
           "Successfully Saved"
         )}
       </button>
+      {error ? <p className="error-message">{error}</p> : null}
 
       <form>
         <input
