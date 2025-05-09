@@ -1,4 +1,4 @@
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { getAllQuestions, updateAllQuestions } from "../../utils";
 import { useEffect, useState } from "react";
 import { LoadingSpinner } from "./LoadingSpinner";
@@ -15,6 +15,7 @@ export function EditQuiz() {
   const [error, setError] = useState("");
   const [saving, setSaving] = useState(false);
   const [success, setSuccess] = useState(false);
+  const navigate = useNavigate();
 
   async function apiCall() {
     const fetchedQuestions = await getAllQuestions(quiz_id);
@@ -59,6 +60,10 @@ export function EditQuiz() {
 
   return (
     <div className="edit-container">
+      <button className="back-button-edit" onClick={() => navigate(-1)}>
+        ← Back
+      </button>
+
       <button className="save-button" disabled={saving} onClick={handleSave}>
         {saving ? (
           <div className="spinner" />
