@@ -139,7 +139,7 @@ export async function updateConnectionQuestions(quizId, question) {
       question_id,
     })
     .then((response) => {
-      console.log(response);
+      return response.status;
     })
     .catch((err) => {
       console.log(err);
@@ -158,7 +158,7 @@ export async function updateSequenceQuestions(quizId, question) {
       question_id,
     })
     .then((response) => {
-      console.log(response);
+      return response.status;
     })
     .catch((err) => {
       console.log(err);
@@ -177,7 +177,7 @@ export async function updateImageQuestions(quizId, question) {
       question_id,
     })
     .then((response) => {
-      console.log(response);
+      return response.status;
     })
     .catch((err) => {
       console.log(err);
@@ -219,7 +219,7 @@ export async function updateMusicQuestions(quizId, question) {
       question_id,
     })
     .then((response) => {
-      console.log(response);
+      return response.status;
     })
     .catch((err) => {
       console.log(err);
@@ -234,7 +234,21 @@ export async function updateVowelQuestions(quizId, question) {
       question_id,
     })
     .then((response) => {
-      console.log(response);
+      return response.status;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+export async function updateQuizName(quizId, newName) {
+  return api
+    .put(`/quizzes`, {
+      quiz_id: quizId,
+      quiz_name: newName,
+    })
+    .then((response) => {
+      return response.status;
     })
     .catch((err) => {
       console.log(err);

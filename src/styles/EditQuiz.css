@@ -25,7 +25,6 @@ body {
   width: 100%;
   max-width: 700px;
   max-height: 80vh;
-  margin: 150px;
 }
 
 .question-form {
@@ -53,4 +52,57 @@ body {
   padding: 0.5rem;
   border: 1px solid #ccc;
   border-radius: 6px;
+}
+
+.quiz-name-input {
+  font-size: 2rem;
+  font-weight: bold;
+  background: transparent;
+  border: none;
+  color: white;
+  text-align: center;
+  margin-bottom: 1rem;
+  outline: none;
+}
+
+.save-button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 1.5rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.save-button:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+}
+
+.save-button:active {
+  background-color: #2471a3;
+  transform: translateY(0);
+}
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 3px solid #fff;
+  border-top: 3px solid #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: auto;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

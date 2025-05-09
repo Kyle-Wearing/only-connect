@@ -1,8 +1,9 @@
 import { useLocation, useParams } from "react-router-dom";
-import { getAllQuestions } from "../../utils";
+import { getAllQuestions, updateAllQuestions } from "../../utils";
 import { useEffect, useState } from "react";
 import { LoadingSpinner } from "./LoadingSpinner";
 import "../styles/EditQuiz.css";
+import { updateQuizName } from "../../api";
 
 export function EditQuiz() {
   const { quiz_id } = useParams();
@@ -10,6 +11,10 @@ export function EditQuiz() {
   const { quiz_name } = location.state;
   const [questions, setQuestions] = useState({});
   const [loading, setLoading] = useState(true);
+  const [quizName, setQuizName] = useState(quiz_name);
+  const [error, setError] = useState("");
+  const [saving, setSaving] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   async function apiCall() {
     const fetchedQuestions = await getAllQuestions(quiz_id);
@@ -35,11 +40,40 @@ export function EditQuiz() {
     setQuestions(updatedQuestions);
   };
 
+  async function handleSave() {
+    setSaving(true);
+    const success = await updateAllQuestions(quiz_id, questions, quizName);
+    if (success.status === 200) {
+      setSuccess(true);
+      setTimeout(() => {
+        setSuccess(false);
+      }, 5000);
+    }
+    setSaving(false);
+  }
+
   return (
     <div className="edit-container">
-      <h1>{quiz_name}</h1>
+      <button className="save-button" disabled={saving} onClick={handleSave}>
+        {saving ? (
+          <div className="spinner" />
+        ) : !success ? (
+          "Save All Changes"
+        ) : (
+          "Successfully Saved"
+        )}
+      </button>
+
+      <form>
+        <input
+          className="quiz-name-input"
+          type="text"
+          value={quizName}
+          onChange={(e) => setQuizName(e.target.value)}
+        />
+      </form>
       <div className="question-list">
-        <h2>Sequence</h2>
+        <h2 className="quiz-name-input">Sequence</h2>
         {questions.sequence.map((question, index) => (
           <div key={index} className="question-form">
             <h3>Question {index + 1}</h3>
@@ -93,7 +127,7 @@ export function EditQuiz() {
           </div>
         ))}
 
-        <h2>Connections</h2>
+        <h2 className="quiz-name-input">Connections</h2>
         {questions.connections.map((question, index) => (
           <div key={index} className="question-form">
             <h3>Question {index + 1}</h3>
@@ -147,7 +181,7 @@ export function EditQuiz() {
           </div>
         ))}
 
-        <h2>Image</h2>
+        <h2 className="quiz-name-input">Image</h2>
         {questions.image.map((question, index) => (
           <div key={index} className="question-form">
             <h3>Question {index + 1}</h3>
@@ -201,7 +235,7 @@ export function EditQuiz() {
           </div>
         ))}
 
-        <h2>Music</h2>
+        <h2 className="quiz-name-input">Music</h2>
         {questions.music.map((question, index) => (
           <div key={index} className="question-form">
             <h3>Question {index + 1}</h3>
@@ -327,7 +361,7 @@ export function EditQuiz() {
           </div>
         ))}
 
-        <h2>Missing Vowels</h2>
+        <h2 className="quiz-name-input">Missing Vowels</h2>
         {questions.vowels.map((question, index) => (
           <div key={index} className="question-form">
             <h3>Question {index + 1}</h3>
