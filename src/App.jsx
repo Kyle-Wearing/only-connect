@@ -8,6 +8,7 @@ import { Profile } from "./components/Profile";
 import { QuizzesHome } from "./components/QuizzesHome";
 import { PlayQuiz } from "./components/PlayQuiz";
 import { EditQuiz } from "./components/EditQuiz";
+import { CreateQuiz } from "./components/CreateQuiz";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/quizzes/:quiz_id/home" element={<QuizzesHome />} />
         <Route path="/quizzes/:quiz_id/play" element={<PlayQuiz />} />
         <Route path="/quizzes/:quiz_id/edit" element={<EditQuiz />} />
+        <Route path="/quizzes/create" element={<CreateQuiz />} />
       </Routes>
     </BrowserRouter>
   );

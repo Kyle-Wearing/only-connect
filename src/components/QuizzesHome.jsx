@@ -20,7 +20,7 @@ export function QuizzesHome() {
       <div className="card">
         <h2>{quiz_name}</h2>
         <div className="button-group">
-          <button className="back-button" onClick={() => navigate(-1)}>
+          <button className="back-button" onClick={() => navigate("/profile")}>
             Back
           </button>
           <button className="play-button" onClick={() => handlePlay()}>

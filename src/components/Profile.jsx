@@ -42,8 +42,19 @@ export function Profile() {
         </button>
       </div>
 
+      <div className="create-quiz-container">
+        <button
+          className="create-quiz-button"
+          onClick={() => {
+            navigate("/quizzes/create");
+          }}
+        >
+          Create A New Quiz
+        </button>
+      </div>
+
       <div className="profile-card">
-        <h1>Quizzes</h1>
+        <h1>Your Quizzes</h1>
         {loading ? (
           <LoadingSpinner />
         ) : quizzes.length > 0 ? (

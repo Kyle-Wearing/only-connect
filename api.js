@@ -254,3 +254,17 @@ export async function updateQuizName(quizId, newName) {
       console.log(err);
     });
 }
+
+export async function createQuiz(userId, quizName) {
+  return api
+    .post("/quizzes", {
+      quiz_name: quizName,
+      user_id: userId,
+    })
+    .then((response) => {
+      return response.headers.out_quiz_id;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}

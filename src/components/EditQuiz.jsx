@@ -3,7 +3,6 @@ import { getAllQuestions, updateAllQuestions } from "../../utils";
 import { useEffect, useState } from "react";
 import { LoadingSpinner } from "./LoadingSpinner";
 import "../styles/EditQuiz.css";
-import { updateQuizName } from "../../api";
 
 export function EditQuiz() {
   const { quiz_id } = useParams();
@@ -60,7 +59,14 @@ export function EditQuiz() {
 
   return (
     <div className="edit-container">
-      <button className="back-button-edit" onClick={() => navigate(-1)}>
+      <button
+        className="back-button-edit"
+        onClick={() => {
+          navigate(`/quizzes/${quiz_id}/home`, {
+            state: { quiz_name: quiz_name },
+          });
+        }}
+      >
         ← Back
       </button>
 

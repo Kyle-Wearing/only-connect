@@ -52,3 +52,34 @@
 .button-bar button:hover {
   background-color: #2980b9;
 }
+
+.create-quiz-container {
+  margin: 2rem 0;
+}
+
+.create-quiz-container {
+  margin: 2rem 0;
+}
+
+.create-quiz-button {
+  background-color: #3498db;
+  border: none;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.create-quiz-button:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+}
+
+.create-quiz-button:active {
+  background-color: #2471a3;
+  transform: translateY(0);
+}
