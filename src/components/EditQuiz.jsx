@@ -101,7 +101,7 @@ export function EditQuiz() {
                   onChange={(e) => {
                     handleInputChange(e, "sequence", index, "clue_1");
                   }}
-                  value={question.clue_1}
+                  value={question.clue_1 || ""}
                 />
               </label>
               <label>
@@ -110,7 +110,7 @@ export function EditQuiz() {
                   onChange={(e) => {
                     handleInputChange(e, "sequence", index, "clue_2");
                   }}
-                  value={question.clue_2}
+                  value={question.clue_2 || ""}
                 />
               </label>
               <label>
@@ -119,7 +119,7 @@ export function EditQuiz() {
                   onChange={(e) => {
                     handleInputChange(e, "sequence", index, "clue_3");
                   }}
-                  value={question.clue_3}
+                  value={question.clue_3 || ""}
                 />
               </label>
               <label>
@@ -128,7 +128,7 @@ export function EditQuiz() {
                   onChange={(e) => {
                     handleInputChange(e, "sequence", index, "clue_4");
                   }}
-                  value={question.clue_4}
+                  value={question.clue_4 || ""}
                 />
               </label>
               <label>
@@ -137,7 +137,7 @@ export function EditQuiz() {
                   onChange={(e) => {
                     handleInputChange(e, "sequence", index, "answer");
                   }}
-                  value={question.answer}
+                  value={question.answer || ""}
                 />
               </label>
             </form>
@@ -155,7 +155,7 @@ export function EditQuiz() {
                   onChange={(e) => {
                     handleInputChange(e, "connections", index, "clue_1");
                   }}
-                  value={question.clue_1}
+                  value={question.clue_1 || ""}
                 />
               </label>
               <label>
@@ -164,7 +164,7 @@ export function EditQuiz() {
                   onChange={(e) => {
                     handleInputChange(e, "connections", index, "clue_2");
                   }}
-                  value={question.clue_2}
+                  value={question.clue_2 || ""}
                 />
               </label>
               <label>
@@ -173,7 +173,7 @@ export function EditQuiz() {
                   onChange={(e) => {
                     handleInputChange(e, "connections", index, "clue_3");
                   }}
-                  value={question.clue_3}
+                  value={question.clue_3 || ""}
                 />
               </label>
               <label>
@@ -182,7 +182,7 @@ export function EditQuiz() {
                   onChange={(e) => {
                     handleInputChange(e, "connections", index, "clue_4");
                   }}
-                  value={question.clue_4}
+                  value={question.clue_4 || ""}
                 />
               </label>
               <label>
@@ -191,7 +191,7 @@ export function EditQuiz() {
                   onChange={(e) => {
                     handleInputChange(e, "connections", index, "answer");
                   }}
-                  value={question.answer}
+                  value={question.answer || ""}
                 />
               </label>
             </form>
@@ -209,7 +209,7 @@ export function EditQuiz() {
                   onChange={(e) => {
                     handleInputChange(e, "image", index, "clue_1");
                   }}
-                  value={question.clue_1}
+                  value={question.clue_1 || ""}
                 />
               </label>
               <label>
@@ -218,7 +218,7 @@ export function EditQuiz() {
                   onChange={(e) => {
                     handleInputChange(e, "image", index, "clue_2");
                   }}
-                  value={question.clue_2}
+                  value={question.clue_2 || ""}
                 />
               </label>
               <label>
@@ -227,7 +227,7 @@ export function EditQuiz() {
                   onChange={(e) => {
                     handleInputChange(e, "image", index, "clue_3");
                   }}
-                  value={question.clue_3}
+                  value={question.clue_3 || ""}
                 />
               </label>
               <label>
@@ -236,7 +236,7 @@ export function EditQuiz() {
                   onChange={(e) => {
                     handleInputChange(e, "image", index, "clue_4");
                   }}
-                  value={question.clue_4}
+                  value={question.clue_4 || ""}
                 />
               </label>
               <label>
@@ -245,7 +245,7 @@ export function EditQuiz() {
                   onChange={(e) => {
                     handleInputChange(e, "image", index, "answer");
                   }}
-                  value={question.answer}
+                  value={question.answer || ""}
                 />
               </label>
             </form>
@@ -263,7 +263,7 @@ export function EditQuiz() {
                   onChange={(e) => {
                     handleInputChange(e, "music", index, "clue_1_url");
                   }}
-                  value={question.clue_1_url}
+                  value={question.clue_1_url || ""}
                 />
               </label>
               <label>
@@ -272,7 +272,7 @@ export function EditQuiz() {
                   onChange={(e) => {
                     handleInputChange(e, "music", index, "clue_1_start");
                   }}
-                  value={question.clue_1_start}
+                  value={question.clue_1_start || ""}
                 />
               </label>
               <label>
@@ -281,7 +281,7 @@ export function EditQuiz() {
                   onChange={(e) => {
                     handleInputChange(e, "music", index, "clue_1_duration");
                   }}
-                  value={question.clue_1_duration}
+                  value={question.clue_1_duration || ""}
                 />
               </label>
               <label>
@@ -290,7 +290,7 @@ export function EditQuiz() {
                   onChange={(e) => {
                     handleInputChange(e, "music", index, "clue_2_url");
                   }}
-                  value={question.clue_2_url}
+                  value={question.clue_2_url || ""}
                 />
               </label>
               <label>
@@ -299,7 +299,7 @@ export function EditQuiz() {
                   onChange={(e) => {
                     handleInputChange(e, "music", index, "clue_2_start");
                   }}
-                  value={question.clue_2_start}
+                  value={question.clue_2_start || ""}
                 />
               </label>
               <label>
@@ -308,7 +308,7 @@ export function EditQuiz() {
                   onChange={(e) => {
                     handleInputChange(e, "music", index, "clue_2_duration");
                   }}
-                  value={question.clue_2_duration}
+                  value={question.clue_2_duration || ""}
                 />
               </label>
               <label>
@@ -317,7 +317,7 @@ export function EditQuiz() {
                   onChange={(e) => {
                     handleInputChange(e, "music", index, "clue_3_url");
                   }}
-                  value={question.clue_3_url}
+                  value={question.clue_3_url || ""}
                 />
               </label>
               <label>
@@ -326,7 +326,7 @@ export function EditQuiz() {
                   onChange={(e) => {
                     handleInputChange(e, "music", index, "clue_3_start");
                   }}
-                  value={question.clue_3_start}
+                  value={question.clue_3_start || ""}
                 />
               </label>
               <label>
@@ -335,7 +335,7 @@ export function EditQuiz() {
                   onChange={(e) => {
                     handleInputChange(e, "music", index, "clue_3_duration");
                   }}
-                  value={question.clue_3_duration}
+                  value={question.clue_3_duration || ""}
                 />
               </label>
               <label>
@@ -344,7 +344,7 @@ export function EditQuiz() {
                   onChange={(e) => {
                     handleInputChange(e, "music", index, "clue_4_url");
                   }}
-                  value={question.clue_4_url}
+                  value={question.clue_4_url || ""}
                 />
               </label>
               <label>
@@ -353,7 +353,7 @@ export function EditQuiz() {
                   onChange={(e) => {
                     handleInputChange(e, "music", index, "clue_4_start");
                   }}
-                  value={question.clue_4_start}
+                  value={question.clue_4_start || ""}
                 />
               </label>
               <label>
@@ -362,7 +362,7 @@ export function EditQuiz() {
                   onChange={(e) => {
                     handleInputChange(e, "music", index, "clue_4_duration");
                   }}
-                  value={question.clue_4_duration}
+                  value={question.clue_4_duration || ""}
                 />
               </label>
               <label>
@@ -371,7 +371,7 @@ export function EditQuiz() {
                   onChange={(e) => {
                     handleInputChange(e, "music", index, "answer");
                   }}
-                  value={question.answer}
+                  value={question.answer || ""}
                 />
               </label>
             </form>
@@ -384,12 +384,21 @@ export function EditQuiz() {
             <h3>Question {index + 1}</h3>
             <form>
               <label>
+                Clue:
+                <input
+                  onChange={(e) => {
+                    handleInputChange(e, "vowels", index, "clue");
+                  }}
+                  value={question.clue || ""}
+                />
+              </label>
+              <label>
                 Answer:
                 <input
                   onChange={(e) => {
                     handleInputChange(e, "vowels", index, "answer");
                   }}
-                  value={question.answer}
+                  value={question.answer || ""}
                 />
               </label>
             </form>

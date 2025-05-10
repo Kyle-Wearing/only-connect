@@ -227,10 +227,11 @@ export async function updateMusicQuestions(quizId, question) {
 }
 
 export async function updateVowelQuestions(quizId, question) {
-  const { answer, question_id } = question;
+  const { answer, clue, question_id } = question;
   return api
     .put(`/quizzes/${quizId}/missing-vowels`, {
       answer,
+      clue,
       question_id,
     })
     .then((response) => {
