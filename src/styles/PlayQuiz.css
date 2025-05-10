@@ -23,3 +23,39 @@
   outline: none;
   background-color: #fff;
 }
+
+.glyph-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1vw;
+  justify-items: center;
+  align-items: center;
+  margin-top: 10vw;
+}
+
+.glyph-tile {
+  background-color: white;
+  border: 2px solid #3498db;
+  border-radius: 12px;
+  padding: 1vw;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, background-color 0.3s;
+  cursor: pointer;
+  width: 30vw;
+}
+
+.glyph-tile:hover {
+  background-color: #ecf5fb;
+  transform: translateY(-2px);
+}
+
+.glyph-img {
+  width: 10vw;
+  height: 10vw;
+  margin-bottom: 1vw;
+}
+
+.glyph-name {
+  font-size: 150%;
+}
