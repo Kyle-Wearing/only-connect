@@ -3,8 +3,7 @@ import bcrypt from "bcryptjs";
 
 const api = axios.create({
   baseURL: "https://apex.oracle.com/pls/apex/onlyconnect/api/",
-
-  timeout: 5000,
+  timeout: 20000,
 });
 
 async function hashPasswords(password) {
