@@ -11,8 +11,8 @@ import Water from "../assets/Water.png";
 
 export function PlayQuiz() {
   const { quiz_id } = useParams();
-  const [team1name, setTeam1name] = useState("");
-  const [team2name, setTeam2name] = useState("");
+  const [team1name, setTeam1name] = useState("team 1");
+  const [team2name, setTeam2name] = useState("team 2");
   const [started, setStarted] = useState(false);
   const navigate = useNavigate();
   const [team1Score, setTeam1Score] = useState(0);

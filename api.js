@@ -6,30 +6,28 @@ const api = axios.create({
   timeout: 20000,
 });
 
+const server = axios.create({
+  baseURL: "https://only-connect-be.fly.dev/api/",
+  timeout: 20000,
+});
+
 async function hashPasswords(password) {
   const hash = await bcrypt.hash(password, 13);
   return hash;
 }
 
 export async function logIn({ name, password }) {
-  return api
+  return server
     .post("/login", {
       username: name,
+      password,
     })
     .then((response) => {
-      return Promise.all([
-        bcrypt.compare(password, response.headers.password),
-        response.headers.user_id,
-      ]);
-    })
-    .then(([passwordCorrect, userId]) => {
-      return passwordCorrect
-        ? { status: 200, userId }
-        : { status: 400, msg: "Invalid Password" };
+      return { status: 200, userId: response };
     })
     .catch((err) => {
       console.log(err);
-      return { status: 404, msg: "Invalid Username" };
+      return { status: 400, msg: "Username Or Password Incorrect" };
     });
 }
 
