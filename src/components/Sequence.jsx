@@ -1,0 +1,11 @@
+export function Sequence({
+  questions,
+  setCategory,
+  setTeam1Score,
+  setTeam2Score,
+  turn,
+  setTurn,
+}) {
+  console.log(questions);
+  return <p>Sequence</p>;
+}

@@ -8,6 +8,12 @@ import HornedViper from "../assets/HornedViper.png";
 import TwistedFlax from "../assets/TwistedFlax.png";
 import Tworeeds from "../assets/Tworeeds.png";
 import Water from "../assets/Water.png";
+import { Connections } from "./Connections";
+import { Sequence } from "./Sequence";
+import { Images } from "./Images";
+import { MissingVowels } from "./MissingVowels";
+import { Wall } from "./Wall";
+import { Music } from "./Music";
 
 export function PlayQuiz() {
   const { quiz_id } = useParams();
@@ -18,7 +24,8 @@ export function PlayQuiz() {
   const [team1Score, setTeam1Score] = useState(0);
   const [team2Score, setTeam2Score] = useState(0);
   const [questions, setQuestions] = useState({});
-  const [turn, setTurn] = useState(1);
+  const [turn, setTurn] = useState(true);
+  const [category, setCategory] = useState("");
   const hieroglyphs = [
     { name: "Lion", src: Lion },
     { name: "Eye of Horus", src: EyeOfHorus },
@@ -27,6 +34,14 @@ export function PlayQuiz() {
     { name: "Two Reeds", src: Tworeeds },
     { name: "Water", src: Water },
   ];
+  const [questionTypes, setQuestionTypes] = useState([
+    "connections",
+    "image",
+    "music",
+    "sequence",
+    "vowels",
+    "wall",
+  ]);
 
   async function apiCall() {
     const fetchedQuestions = await getAllQuestions(quiz_id);
@@ -35,6 +50,10 @@ export function PlayQuiz() {
 
   useEffect(() => {
     apiCall();
+    const categoryAssignments = [...questionTypes].sort(
+      () => Math.random() - 0.5
+    );
+    setQuestionTypes(categoryAssignments);
   }, []);
 
   function handleSubmit(e) {
@@ -42,6 +61,10 @@ export function PlayQuiz() {
     if (team1name && team2name) {
       setStarted(true);
     }
+  }
+
+  function handleClick(type) {
+    setCategory(type);
   }
 
   if (!started) {
@@ -83,14 +106,98 @@ export function PlayQuiz() {
     );
   }
 
-  return (
-    <div className="glyph-container">
-      {hieroglyphs.map((glyph) => (
-        <button key={glyph.name} className="glyph-tile">
-          <img src={glyph.src} alt={glyph.name} className="glyph-img" />
-          <p className="glyph-name">{glyph.name}</p>
-        </button>
-      ))}
-    </div>
-  );
+  if (!category) {
+    return (
+      <>
+        <div className="scoreboard">
+          <p className="score">
+            {team1name}: <span className="score-value">{team1Score}</span>
+          </p>
+          <p className="score">
+            {team2name}: <span className="score-value">{team2Score}</span>
+          </p>
+        </div>
+        <p className="turn-indicator">
+          {turn ? `${team1name} Choose` : `${team2name} Choose`}
+        </p>
+        <div className="glyph-container">
+          {hieroglyphs.map((glyph, index) => {
+            return (
+              <button
+                key={glyph.name}
+                className="glyph-tile"
+                onClick={() => handleClick(questionTypes[index])}
+              >
+                <img src={glyph.src} alt={glyph.name} className="glyph-img" />
+                <p className="glyph-name">{glyph.name}</p>
+              </button>
+            );
+          })}
+        </div>
+      </>
+    );
+  }
+
+  const categoryComponents = {
+    connections: (
+      <Connections
+        questions={questions.connections}
+        setCategory={setCategory}
+        setTeam1Score={setTeam1Score}
+        setTeam2Score={setTeam2Score}
+        turn={turn}
+        setTurn={setTurn}
+      />
+    ),
+    sequence: (
+      <Sequence
+        questions={questions.sequence}
+        setCategory={setCategory}
+        setTeam1Score={setTeam1Score}
+        setTeam2Score={setTeam2Score}
+        turn={turn}
+        setTurn={setTurn}
+      />
+    ),
+    image: (
+      <Images
+        questions={questions.image}
+        setCategory={setCategory}
+        setTeam1Score={setTeam1Score}
+        setTeam2Score={setTeam2Score}
+        turn={turn}
+        setTurn={setTurn}
+      />
+    ),
+    music: (
+      <Music
+        questions={questions.music}
+        setCategory={setCategory}
+        setTeam1Score={setTeam1Score}
+        setTeam2Score={setTeam2Score}
+        turn={turn}
+        setTurn={setTurn}
+      />
+    ),
+    vowels: (
+      <MissingVowels
+        questions={questions.vowels}
+        setCategory={setCategory}
+        setTeam1Score={setTeam1Score}
+        setTeam2Score={setTeam2Score}
+      />
+    ),
+    wall: (
+      <Wall
+        questions={questions.wall}
+        setCategory={setCategory}
+        setTeam1Score={setTeam1Score}
+        setTeam2Score={setTeam2Score}
+        turn={turn}
+        setTurn={setTurn}
+      />
+    ),
+  };
+
+  return categoryComponents[category];
 }

@@ -30,7 +30,7 @@
   gap: 1vw;
   justify-items: center;
   align-items: center;
-  margin-top: 10vw;
+  margin-top: 5vw;
 }
 
 .glyph-tile {
@@ -58,4 +58,39 @@
 
 .glyph-name {
   font-size: 150%;
+}
+
+.scoreboard {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.score {
+  background: #f0f4ff;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.score-value {
+  color: #1a73e8;
+  font-weight: 900;
+}
+
+.turn-indicator {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+  margin: 1rem 0;
+  background: #e8f0fe;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-left: 30vw;
+  margin-right: 30vw;
 }

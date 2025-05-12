@@ -23,7 +23,7 @@ export async function logIn({ name, password }) {
       password,
     })
     .then((response) => {
-      return { status: 200, userId: response };
+      return { status: 200, userId: response.data.user_id };
     })
     .catch((err) => {
       console.log(err);
