@@ -1,11 +1,21 @@
 export function Images({
   questions,
   setCategory,
+  team1name,
+  team2name,
   setTeam1Score,
   setTeam2Score,
   turn,
   setTurn,
 }) {
   console.log(questions);
-  return <p>Images</p>;
+  return (
+    <button
+      onClick={() => {
+        setCategory("");
+      }}
+    >
+      Images
+    </button>
+  );
 }

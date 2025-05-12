@@ -1,11 +1,21 @@
 export function Music({
   questions,
   setCategory,
+  team1name,
+  team2name,
   setTeam1Score,
   setTeam2Score,
   turn,
   setTurn,
 }) {
   console.log(questions);
-  return <p>music</p>;
+  return (
+    <button
+      onClick={() => {
+        setCategory("");
+      }}
+    >
+      music
+    </button>
+  );
 }

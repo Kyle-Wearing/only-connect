@@ -143,6 +143,8 @@ export function PlayQuiz() {
       <Connections
         questions={questions.connections}
         setCategory={setCategory}
+        team1name={team1name}
+        team2name={team2name}
         setTeam1Score={setTeam1Score}
         setTeam2Score={setTeam2Score}
         turn={turn}
@@ -153,6 +155,8 @@ export function PlayQuiz() {
       <Sequence
         questions={questions.sequence}
         setCategory={setCategory}
+        team1name={team1name}
+        team2name={team2name}
         setTeam1Score={setTeam1Score}
         setTeam2Score={setTeam2Score}
         turn={turn}
@@ -163,6 +167,8 @@ export function PlayQuiz() {
       <Images
         questions={questions.image}
         setCategory={setCategory}
+        team1name={team1name}
+        team2name={team2name}
         setTeam1Score={setTeam1Score}
         setTeam2Score={setTeam2Score}
         turn={turn}
@@ -173,6 +179,8 @@ export function PlayQuiz() {
       <Music
         questions={questions.music}
         setCategory={setCategory}
+        team1name={team1name}
+        team2name={team2name}
         setTeam1Score={setTeam1Score}
         setTeam2Score={setTeam2Score}
         turn={turn}
@@ -183,6 +191,8 @@ export function PlayQuiz() {
       <MissingVowels
         questions={questions.vowels}
         setCategory={setCategory}
+        team1name={team1name}
+        team2name={team2name}
         setTeam1Score={setTeam1Score}
         setTeam2Score={setTeam2Score}
       />
@@ -191,6 +201,8 @@ export function PlayQuiz() {
       <Wall
         questions={questions.wall}
         setCategory={setCategory}
+        team1name={team1name}
+        team2name={team2name}
         setTeam1Score={setTeam1Score}
         setTeam2Score={setTeam2Score}
         turn={turn}
