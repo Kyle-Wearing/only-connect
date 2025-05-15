@@ -1,0 +1,42 @@
+.connections-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 99vh;
+  padding: 2rem;
+}
+
+.connections-title {
+  text-align: center;
+  color: white;
+  font-size: 5vw;
+}
+
+.connections-turn {
+  text-align: center;
+  color: white;
+  font-size: 3vw;
+}
+
+.connections-clue-container {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: flex-start;
+}
+
+.connections-answer-box {
+  margin: auto;
+}
+
+.connections-clue-box {
+  margin: 5px;
+}
+
+.connections-button-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1.5rem 0;
+  margin-top: auto;
+}

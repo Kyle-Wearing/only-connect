@@ -18,7 +18,7 @@ export function Default() {
           </button>
           <button
             className="auth-button-secondary "
-            onClick={() => navigate("/signup")}
+            onClick={() => navigate("/sign-up")}
           >
             Sign Up
           </button>

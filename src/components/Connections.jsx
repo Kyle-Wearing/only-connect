@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import "../styles/Connections.css";
 
 export function Connections({
   questions,
@@ -10,8 +11,6 @@ export function Connections({
   turn,
   setTurn,
 }) {
-  //   console.log(questions);
-
   const [counter, setCounter] = useState(0);
   const [clueNum, setClueNum] = useState(1);
   const [revealAns, setRevealAns] = useState(false);
@@ -55,13 +54,13 @@ export function Connections({
       setTurn(!turn);
     } else {
       setIncorrectDisabled(true);
+      setCorrectDisabled(true);
       setClueNum(4);
       setRevealAns(true);
     }
   }
 
   function handleNextClue() {
-    console.log(clueNum);
     if (clueNum < 4) {
       setClueNum(clueNum + 1);
     }
@@ -71,6 +70,7 @@ export function Connections({
     if (!passed) {
       setTurn(!turn);
     }
+    setPassed(false);
     setIncorrectDisabled(false);
     setCorrectDisabled(false);
     setClueNum(1);
@@ -79,21 +79,49 @@ export function Connections({
   }
 
   return (
-    <div>
-      <h1>{turn ? `${team1name}'s turn` : `${team2name}'s turn`}</h1>
-      {questions[counter] ? <p>{questions[counter].clue_1}</p> : null}
-      {clueNum > 1 ? <p>{questions[counter].clue_2}</p> : null}
-      {clueNum > 2 ? <p>{questions[counter].clue_3}</p> : null}
-      {clueNum > 3 ? <p>{questions[counter].clue_4}</p> : null}
-      {revealAns ? <p>{questions[counter].answer}</p> : null}
-      <button onClick={handleNextClue}>next clue</button>
-      <button onClick={handleNextQuestion}>next question</button>
-      <button disabled={correctDisabled} onClick={handleCorrect}>
-        correct guess
-      </button>
-      <button disabled={incorrectDisabled} onClick={handleIncorrect}>
-        incorrect guess
-      </button>
+    <div className="connections-container">
+      <h1 className="connections-title">Find The Connection</h1>
+      <h2 className="connections-turn">
+        {turn ? `${team1name}'s turn` : `${team2name}'s turn`}
+      </h2>
+      <div className="connections-answer-box">
+        {revealAns ? <p>{questions[counter].answer}</p> : null}
+      </div>
+      <div className="connections-clue-container">
+        <div className="connections-clue-box">
+          <p>5 Points</p>
+          {questions[counter] ? <p>{questions[counter].clue_1}</p> : null}
+        </div>
+        <div className="connections-clue-box">
+          <p>3 Points</p>
+          {clueNum > 1 ? <p>{questions[counter].clue_2}</p> : null}
+        </div>
+        <div className="connections-clue-box">
+          <p>2 Points</p>
+          {clueNum > 2 ? <p>{questions[counter].clue_3}</p> : null}
+        </div>
+        <div className="connections-clue-box">
+          <p>1 Point</p>
+          {clueNum > 3 ? <p>{questions[counter].clue_4}</p> : null}
+        </div>
+      </div>
+      <div className="connections-button-container">
+        <button disabled={clueNum === 4} onClick={handleNextClue}>
+          next clue
+        </button>
+        <button
+          disabled={!correctDisabled && !incorrectDisabled}
+          onClick={handleNextQuestion}
+        >
+          next question
+        </button>
+        <button disabled={correctDisabled} onClick={handleCorrect}>
+          correct guess
+        </button>
+        <button disabled={incorrectDisabled} onClick={handleIncorrect}>
+          incorrect guess
+        </button>
+      </div>
     </div>
   );
 }
