@@ -1,0 +1,60 @@
+.image-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 99vh;
+  padding: 2rem;
+}
+
+.image-title {
+  text-align: center;
+  color: white;
+  font-size: 5vw;
+}
+
+.image-turn {
+  text-align: center;
+  color: white;
+  font-size: 3vw;
+}
+
+.image-clue-container {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: flex-start;
+  justify-content: space-evenly;
+}
+
+.image-answer-box {
+  align-self: center;
+  margin-bottom: 50px;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 5px;
+  height: 10vh;
+  width: 20vw;
+  text-align: center;
+}
+
+.image-clue-box {
+  margin: 5px;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 10px;
+  height: 25vh;
+  width: 20vw;
+  text-align: center;
+}
+
+.image-button-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1.5rem 0;
+  margin-top: auto;
+}
+
+.image-img {
+  width: 5vw;
+}
