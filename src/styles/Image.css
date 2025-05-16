@@ -56,5 +56,8 @@
 }
 
 .image-img {
-  width: 5vw;
+  width: 19vw;
+  height: 19vh;
+  border: 3px solid black;
+  border-radius: 10px;
 }
