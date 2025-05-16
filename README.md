@@ -1,3 +1,3 @@
 Only Connect
 
-https://68262e9dc0e25e8877ce224b--only-connect.netlify.app
+https://6827598945d5e8e7373f9d1c--only-connect.netlify.app
