@@ -19,8 +19,6 @@ export function Music({
   const [correctDisabled, setCorrectDisabled] = useState(false);
   const [playMusic, setPlayMusic] = useState(0);
 
-  console.log(questions);
-
   useEffect(() => {
     if (counter === questions.length) {
       setCategory("");
