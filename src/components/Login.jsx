@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { logIn } from "../../api";
+import { LoadingSpinner } from "./LoadingSpinner";
 
 export function Login() {
   const [credentials, setCredentials] = useState({
@@ -12,6 +13,7 @@ export function Login() {
   });
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -21,6 +23,7 @@ export function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     const user = await logIn(credentials);
     if (user.status === 200) {
       sessionStorage.setItem("user_id", user.userId);
@@ -28,6 +31,7 @@ export function Login() {
     } else {
       setError(user.msg);
     }
+    setLoading(false);
   };
 
   return (
@@ -70,9 +74,9 @@ export function Login() {
             </button>
           </div>
         </div>
-        {error ? <p className="login-error">{error}</p> : null}
+        {error && <p className="login-error">{error}</p>}
         <button type="submit" className="login-button">
-          Log In
+          {loading ? <LoadingSpinner /> : "Log In"}
         </button>
         <p className="login-switch">
           Don't have an account? <Link to="/sign-up">Sign up</Link>

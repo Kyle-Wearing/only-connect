@@ -5,6 +5,7 @@ export function QuizzesHome() {
   const { quiz_id } = useParams();
   const location = useLocation();
   const { quiz_name } = location.state;
+  const user_id = sessionStorage.getItem("user_id");
   const navigate = useNavigate();
 
   function handleEdit() {
@@ -20,15 +21,17 @@ export function QuizzesHome() {
       <div className="card">
         <h2>{quiz_name}</h2>
         <div className="button-group">
-          <button className="back-button" onClick={() => navigate("/profile")}>
+          <button className="back-button" onClick={() => navigate(-1)}>
             Back
           </button>
           <button className="play-button" onClick={() => handlePlay()}>
             Play
           </button>
-          <button className="edit-button" onClick={() => handleEdit()}>
-            Edit
-          </button>
+          {user_id && (
+            <button className="edit-button" onClick={() => handleEdit()}>
+              Edit
+            </button>
+          )}
         </div>
       </div>
     </div>

@@ -44,7 +44,9 @@ export function Home() {
               <li
                 key={quiz.quiz_id}
                 onClick={() => {
-                  navigate("/");
+                  navigate(`/quizzes/${quiz.quiz_id}/home`, {
+                    state: { quiz_name: quiz.quiz_name },
+                  });
                 }}
               >
                 {quiz.quiz_name}
