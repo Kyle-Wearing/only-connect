@@ -4,12 +4,14 @@ import {
   getMusicQuestions,
   getSequenceQuestions,
   getVowelsQuestions,
+  getWallQuestions,
   updateConnectionQuestions,
   updateImageQuestions,
   updateMusicQuestions,
   updateQuizName,
   updateSequenceQuestions,
   updateVowelQuestions,
+  updateWallQuestions,
 } from "./api";
 
 export async function getAllQuestions(quizId) {
@@ -20,16 +22,17 @@ export async function getAllQuestions(quizId) {
   promiseArr.push(getMusicQuestions(quizId));
   promiseArr.push(getImageQuestions(quizId));
   promiseArr.push(getVowelsQuestions(quizId));
+  promiseArr.push(getWallQuestions(quizId));
 
   return Promise.all(promiseArr).then(
-    ([connections, sequence, music, image, vowels]) => {
-      return { connections, sequence, music, image, vowels };
+    ([connections, sequence, music, image, vowels, wall]) => {
+      return { connections, sequence, music, image, vowels, wall };
     }
   );
 }
 
 export async function updateAllQuestions(quizId, questions, newName) {
-  const { connections, sequence, image, music, vowels } = questions;
+  const { connections, sequence, image, music, vowels, wall } = questions;
   const promiseArr = [];
 
   connections.forEach((question) => {
@@ -46,6 +49,9 @@ export async function updateAllQuestions(quizId, questions, newName) {
   });
   vowels.forEach((question) => {
     promiseArr.push(updateVowelQuestions(quizId, question));
+  });
+  wall.forEach((question) => {
+    promiseArr.push(updateWallQuestions(quizId, question));
   });
   promiseArr.push(updateQuizName(quizId, newName));
 

@@ -16,7 +16,11 @@ export function CreateQuiz() {
     }
     setError("");
     const quiz_id = await createQuiz(user_id, quizName);
-    navigate(`/quizzes/${quiz_id}/edit`, { state: { quiz_name: quizName } });
+    if (quiz_id) {
+      navigate(`/quizzes/${quiz_id}/edit`, { state: { quiz_name: quizName } });
+    } else {
+      setError("Something went wrong");
+    }
   };
 
   return (

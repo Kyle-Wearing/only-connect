@@ -124,6 +124,17 @@ export async function getVowelsQuestions(quizId) {
     });
 }
 
+export async function getWallQuestions(quizId) {
+  return api
+    .get(`/quizzes/${quizId}/wall`)
+    .then((response) => {
+      return response.data.items;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
 export async function updateConnectionQuestions(quizId, question) {
   const { clue_1, clue_2, clue_3, clue_4, answer, question_id } = question;
   return api
@@ -229,6 +240,62 @@ export async function updateVowelQuestions(quizId, question) {
     .put(`/quizzes/${quizId}/missing-vowels`, {
       answer,
       clue,
+      question_id,
+    })
+    .then((response) => {
+      return response.status;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+export async function updateWallQuestions(quizId, question) {
+  const {
+    word_1,
+    word_2,
+    word_3,
+    word_4,
+    word_5,
+    word_6,
+    word_7,
+    word_8,
+    word_9,
+    word_10,
+    word_11,
+    word_12,
+    word_13,
+    word_14,
+    word_15,
+    word_16,
+    answer_1,
+    answer_2,
+    answer_3,
+    answer_4,
+    question_id,
+  } = question;
+  return api
+    .put(`/quizzes/${quizId}/wall`, {
+      word_1,
+      word_2,
+      word_3,
+      word_4,
+      word_5,
+      word_6,
+      word_7,
+      word_8,
+      word_9,
+      word_10,
+      word_11,
+      word_12,
+      word_13,
+      word_14,
+      word_15,
+      word_16,
+      answer_1,
+      answer_2,
+      answer_3,
+      answer_4,
       question_id,
     })
     .then((response) => {

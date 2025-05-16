@@ -404,6 +404,196 @@ export function EditQuiz() {
             </form>
           </div>
         ))}
+        <h2 className="quiz-name-input">Wall</h2>
+        {questions.wall.map((question, index) => {
+          return (
+            <div key={index} className="question-form">
+              <h3>Question {index + 1}</h3>
+              <form>
+                <label>
+                  Word 1:
+                  <input
+                    onChange={(e) => {
+                      handleInputChange(e, "wall", index, "word_1");
+                    }}
+                    value={question.word_1 || ""}
+                  />
+                </label>
+                <label>
+                  Word 2:
+                  <input
+                    onChange={(e) => {
+                      handleInputChange(e, "wall", index, "word_2");
+                    }}
+                    value={question.word_2 || ""}
+                  />
+                </label>
+                <label>
+                  Word 3:
+                  <input
+                    onChange={(e) => {
+                      handleInputChange(e, "wall", index, "word_3");
+                    }}
+                    value={question.word_3 || ""}
+                  />
+                </label>
+                <label>
+                  Word 4:
+                  <input
+                    onChange={(e) => {
+                      handleInputChange(e, "wall", index, "word_4");
+                    }}
+                    value={question.word_4 || ""}
+                  />
+                </label>
+                <label>
+                  Answer 1:
+                  <input
+                    onChange={(e) => {
+                      handleInputChange(e, "wall", index, "answer_1");
+                    }}
+                    value={question.answer_1 || ""}
+                  />
+                </label>
+                <label>
+                  Word 1:
+                  <input
+                    onChange={(e) => {
+                      handleInputChange(e, "wall", index, "word_5");
+                    }}
+                    value={question.word_5 || ""}
+                  />
+                </label>
+                <label>
+                  Word 2:
+                  <input
+                    onChange={(e) => {
+                      handleInputChange(e, "wall", index, "word_6");
+                    }}
+                    value={question.word_6 || ""}
+                  />
+                </label>
+                <label>
+                  Word 3:
+                  <input
+                    onChange={(e) => {
+                      handleInputChange(e, "wall", index, "word_7");
+                    }}
+                    value={question.word_7 || ""}
+                  />
+                </label>
+                <label>
+                  Word 4:
+                  <input
+                    onChange={(e) => {
+                      handleInputChange(e, "wall", index, "word_8");
+                    }}
+                    value={question.word_8 || ""}
+                  />
+                </label>
+                <label>
+                  Answer 2:
+                  <input
+                    onChange={(e) => {
+                      handleInputChange(e, "wall", index, "answer_2");
+                    }}
+                    value={question.answer_2 || ""}
+                  />
+                </label>
+                <label>
+                  Word 1:
+                  <input
+                    onChange={(e) => {
+                      handleInputChange(e, "wall", index, "word_9");
+                    }}
+                    value={question.word_9 || ""}
+                  />
+                </label>
+                <label>
+                  Word 2:
+                  <input
+                    onChange={(e) => {
+                      handleInputChange(e, "wall", index, "word_10");
+                    }}
+                    value={question.word_10 || ""}
+                  />
+                </label>
+                <label>
+                  Word 3:
+                  <input
+                    onChange={(e) => {
+                      handleInputChange(e, "wall", index, "word_11");
+                    }}
+                    value={question.word_11 || ""}
+                  />
+                </label>
+                <label>
+                  Word 4:
+                  <input
+                    onChange={(e) => {
+                      handleInputChange(e, "wall", index, "word_12");
+                    }}
+                    value={question.word_12 || ""}
+                  />
+                </label>
+                <label>
+                  Answer 3:
+                  <input
+                    onChange={(e) => {
+                      handleInputChange(e, "wall", index, "answer_3");
+                    }}
+                    value={question.answer_3 || ""}
+                  />
+                </label>
+                <label>
+                  Word 1:
+                  <input
+                    onChange={(e) => {
+                      handleInputChange(e, "wall", index, "word_13");
+                    }}
+                    value={question.word_13 || ""}
+                  />
+                </label>
+                <label>
+                  Word 2:
+                  <input
+                    onChange={(e) => {
+                      handleInputChange(e, "wall", index, "word_14");
+                    }}
+                    value={question.word_14 || ""}
+                  />
+                </label>
+                <label>
+                  Word 3:
+                  <input
+                    onChange={(e) => {
+                      handleInputChange(e, "wall", index, "word_15");
+                    }}
+                    value={question.word_15 || ""}
+                  />
+                </label>
+                <label>
+                  Word 4:
+                  <input
+                    onChange={(e) => {
+                      handleInputChange(e, "wall", index, "word_16");
+                    }}
+                    value={question.word_16 || ""}
+                  />
+                </label>
+                <label>
+                  Answer 4:
+                  <input
+                    onChange={(e) => {
+                      handleInputChange(e, "wall", index, "answer_4");
+                    }}
+                    value={question.answer_4 || ""}
+                  />
+                </label>
+              </form>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
