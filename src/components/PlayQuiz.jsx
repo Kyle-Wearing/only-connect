@@ -26,14 +26,15 @@ export function PlayQuiz() {
   const [questions, setQuestions] = useState({});
   const [turn, setTurn] = useState(true);
   const [category, setCategory] = useState("");
-  const hieroglyphs = [
-    { name: "Lion", src: Lion },
-    { name: "Eye of Horus", src: EyeOfHorus },
-    { name: "Horned Viper", src: HornedViper },
-    { name: "Twisted Flax", src: TwistedFlax },
-    { name: "Two Reeds", src: Tworeeds },
-    { name: "Water", src: Water },
-  ];
+
+  const [hieroglyphs, setHieroglyphs] = useState([
+    { name: "Lion", src: Lion, disabled: false },
+    { name: "Eye of Horus", src: EyeOfHorus, disabled: false },
+    { name: "Horned Viper", src: HornedViper, disabled: false },
+    { name: "Twisted Flax", src: TwistedFlax, disabled: false },
+    { name: "Two Reeds", src: Tworeeds, disabled: false },
+    { name: "Water", src: Water, disabled: false },
+  ]);
   const [questionTypes, setQuestionTypes] = useState([
     "connections",
     "image",
@@ -65,8 +66,14 @@ export function PlayQuiz() {
     }
   }
 
-  function handleClick(type) {
-    setCategory(type);
+  function handleClick(index) {
+    setHieroglyphs((curr) => {
+      const newGlyphs = [...curr];
+      newGlyphs[index].disabled = true;
+      console.log(newGlyphs);
+      return newGlyphs;
+    });
+    setCategory(questionTypes[index]);
   }
 
   if (!started) {
@@ -111,6 +118,13 @@ export function PlayQuiz() {
   if (!category) {
     return (
       <>
+        <button
+          onClick={() => {
+            setCategory("wall");
+          }}
+        >
+          WALL
+        </button>
         <div className="scoreboard">
           <p className="score">
             {team1name}: <span className="score-value">{team1Score}</span>
@@ -127,8 +141,9 @@ export function PlayQuiz() {
             return (
               <button
                 key={glyph.name}
+                disabled={glyph.disabled}
                 className="glyph-tile"
-                onClick={() => handleClick(questionTypes[index])}
+                onClick={() => handleClick(index)}
               >
                 <img src={glyph.src} alt={glyph.name} className="glyph-img" />
                 <p className="glyph-name">{glyph.name}</p>
