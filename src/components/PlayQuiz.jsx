@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "../styles/PlayQuiz.css";
-import { getAllQuestions } from "../../utils";
+import { embedYoutubeUrls, getAllQuestions } from "../../utils";
 import Lion from "../assets/Lion.png";
 import EyeOfHorus from "../assets/EyeOfHorus.png";
 import HornedViper from "../assets/HornedViper.png";
@@ -45,6 +45,8 @@ export function PlayQuiz() {
 
   async function apiCall() {
     const fetchedQuestions = await getAllQuestions(quiz_id);
+    const updatedUrls = embedYoutubeUrls(fetchedQuestions.music);
+    fetchedQuestions.music = updatedUrls;
     setQuestions(fetchedQuestions);
   }
 

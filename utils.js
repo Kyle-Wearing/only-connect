@@ -63,3 +63,57 @@ export async function updateAllQuestions(quizId, questions, newName) {
       console.log(err);
     });
 }
+
+export function embedYoutubeUrls(questions) {
+  const embededUrls = questions.map((question) => {
+    let clue_1 = null;
+    let clue_2 = null;
+    let clue_3 = null;
+    let clue_4 = null;
+
+    if (question.clue_1_url) {
+      clue_1 = `https://www.youtube.com/embed/${
+        question.clue_1_url.split("/")[3]
+      }&rel=0&amp;controls=0&amp;showinfo=0&amp;start=${
+        question.clue_1_start
+      }&amp;autoplay=1`;
+    }
+
+    if (question.clue_2_url) {
+      clue_2 = `https://www.youtube.com/embed/${
+        question.clue_2_url.split("/")[3]
+      }&rel=0&amp;controls=0&amp;showinfo=0&amp;start=${
+        question.clue_2_start
+      }&amp;autoplay=1`;
+    }
+
+    if (question.clue_3_url) {
+      clue_3 = `https://www.youtube.com/embed/${
+        question.clue_3_url.split("/")[3]
+      }&rel=0&amp;controls=0&amp;showinfo=0&amp;start=${
+        question.clue_3_start
+      }&amp;autoplay=1`;
+    }
+
+    if (question.clue_4_url) {
+      clue_4 = `https://www.youtube.com/embed/${
+        question.clue_4_url.split("/")[3]
+      }&rel=0&amp;controls=0&amp;showinfo=0&amp;start=${
+        question.clue_4_start
+      }&amp;autoplay=1`;
+    }
+
+    return {
+      clue_1_url: clue_1,
+      clue_1_duration: question.clue_1_duration,
+      clue_2_url: clue_2,
+      clue_2_duration: question.clue_2_duration,
+      clue_3_url: clue_3,
+      clue_3_duration: question.clue_3_duration,
+      clue_4_url: clue_4,
+      clue_4_duration: question.clue_4_duration,
+    };
+  });
+
+  return embededUrls;
+}
