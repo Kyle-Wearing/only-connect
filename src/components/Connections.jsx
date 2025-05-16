@@ -85,7 +85,8 @@ export function Connections({
         {turn ? `${team1name}'s turn` : `${team2name}'s turn`}
       </h2>
       <div className="connections-answer-box">
-        {revealAns ? <p>{questions[counter].answer}</p> : null}
+        <p>Answer</p>
+        {revealAns && <p>{questions[counter].answer}</p>}
       </div>
       <div className="connections-clue-container">
         <div className="connections-clue-box">
