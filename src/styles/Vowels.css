@@ -1,0 +1,65 @@
+.vowels-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 99vh;
+  padding: 2rem;
+}
+
+.vowels-title {
+  text-align: center;
+  color: white;
+  font-size: 5vw;
+}
+
+.vowels-turn {
+  text-align: center;
+  color: white;
+  font-size: 3vw;
+}
+
+.vowels-clue-box {
+  align-self: center;
+  margin-bottom: 50px;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 5px;
+  height: 10vh;
+  width: 20vw;
+  text-align: center;
+}
+
+.vowels-answer-box {
+  display: flex;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 5px;
+  height: 10vh;
+  min-width: 40vw;
+  text-align: center;
+  justify-content: center;
+  align-self: center;
+  align-items: center;
+}
+
+.vowels-button-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1.5rem 0;
+  margin-top: auto;
+}
+
+.vowels-score-buttons-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 5vh;
+  gap: 5vw;
+}
+
+.vowels-clue-text {
+  font-size: xx-large;
+}
+
+.vowels-ans-text {
+  font-size: xxx-large;
+}
