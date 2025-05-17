@@ -171,7 +171,7 @@ export function Wall({
         <button
           className="wall-score-button"
           onClick={() => {
-            setTimer(30);
+            setTimer(45);
             setStarted(true);
           }}
         >
