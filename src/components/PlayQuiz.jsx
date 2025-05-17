@@ -17,8 +17,8 @@ import { Music } from "./Music";
 
 export function PlayQuiz() {
   const { quiz_id } = useParams();
-  const [team1name, setTeam1name] = useState("team 1");
-  const [team2name, setTeam2name] = useState("team 2");
+  const [team1name, setTeam1name] = useState("");
+  const [team2name, setTeam2name] = useState("");
   const [started, setStarted] = useState(false);
   const navigate = useNavigate();
   const [team1Score, setTeam1Score] = useState(0);
@@ -91,6 +91,7 @@ export function PlayQuiz() {
             Team 1 Name:
             <input
               onChange={(e) => setTeam1name(e.target.value)}
+              placeholder="Enter Team 1 Name"
               value={team1name}
               className="input-field"
             />
@@ -99,6 +100,7 @@ export function PlayQuiz() {
             Team 2 Name:
             <input
               onChange={(e) => setTeam2name(e.target.value)}
+              placeholder="Enter Team 2 Name"
               value={team2name}
               className="input-field"
             />
