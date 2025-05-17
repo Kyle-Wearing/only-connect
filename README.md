@@ -2,7 +2,7 @@ Only Connect made to be like the game show.
 
 Play other users quizzes or create and account to make your own.
 
-The image clues must be an imahe url from google.
+The image clues must be an image url from google.
 
 The music questions url must be a youtube url with the start time of the music video in seconds and how long you want it to play the song from that start point in seconds.
 
