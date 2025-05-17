@@ -59,18 +59,23 @@ export function Profile() {
           <LoadingSpinner />
         ) : quizzes.length > 0 ? (
           <ul className="quiz-list">
-            {quizzes.map((quiz) => (
-              <li
-                key={quiz.quiz_id}
-                onClick={() => {
-                  navigate(`/quizzes/${quiz.quiz_id}/home`, {
-                    state: { quiz_name: quiz.quiz_name },
-                  });
-                }}
-              >
-                {quiz.quiz_name}
-              </li>
-            ))}
+            {quizzes.map((quiz) => {
+              return (
+                <li
+                  key={quiz.quiz_id}
+                  onClick={() => {
+                    navigate(`/quizzes/${quiz.quiz_id}/home`, {
+                      state: {
+                        quiz_name: quiz.quiz_name,
+                        quiz_maker: quiz.user_id,
+                      },
+                    });
+                  }}
+                >
+                  {quiz.quiz_name}
+                </li>
+              );
+            })}
           </ul>
         ) : (
           <p>No quizzes found</p>

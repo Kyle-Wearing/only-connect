@@ -4,16 +4,20 @@ import "../styles/QuizzesHome.css";
 export function QuizzesHome() {
   const { quiz_id } = useParams();
   const location = useLocation();
-  const { quiz_name } = location.state;
+  const { quiz_name, quiz_maker } = location.state;
   const user_id = sessionStorage.getItem("user_id");
   const navigate = useNavigate();
 
   function handleEdit() {
-    navigate(`/quizzes/${quiz_id}/edit`, { state: { quiz_name: quiz_name } });
+    navigate(`/quizzes/${quiz_id}/edit`, {
+      state: { quiz_name: quiz_name, quiz_maker: quiz_maker },
+    });
   }
 
   function handlePlay() {
-    navigate(`/quizzes/${quiz_id}/play`, { state: { quiz_name: quiz_name } });
+    navigate(`/quizzes/${quiz_id}/play`, {
+      state: { quiz_name: quiz_name, quiz_maker: quiz_maker },
+    });
   }
 
   return (
@@ -30,7 +34,7 @@ export function QuizzesHome() {
           <button className="play-button" onClick={() => handlePlay()}>
             Play
           </button>
-          {user_id && (
+          {user_id === quiz_maker.toString() && (
             <button className="edit-button" onClick={() => handleEdit()}>
               Edit
             </button>

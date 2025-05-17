@@ -7,7 +7,7 @@ import "../styles/EditQuiz.css";
 export function EditQuiz() {
   const { quiz_id } = useParams();
   const location = useLocation();
-  const { quiz_name } = location.state;
+  const { quiz_name, quiz_maker } = location.state;
   const [questions, setQuestions] = useState({});
   const [loading, setLoading] = useState(true);
   const [quizName, setQuizName] = useState(quiz_name);
@@ -63,7 +63,7 @@ export function EditQuiz() {
         className="back-button-edit"
         onClick={() => {
           navigate(`/quizzes/${quiz_id}/home`, {
-            state: { quiz_name: quiz_name },
+            state: { quiz_name: quiz_name, quiz_maker: quiz_maker },
           });
         }}
       >
