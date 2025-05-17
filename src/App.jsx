@@ -9,6 +9,7 @@ import { QuizzesHome } from "./components/QuizzesHome";
 import { PlayQuiz } from "./components/PlayQuiz";
 import { EditQuiz } from "./components/EditQuiz";
 import { CreateQuiz } from "./components/CreateQuiz";
+import { EndQuiz } from "./components/EndQuiz";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/quizzes/:quiz_id/play" element={<PlayQuiz />} />
         <Route path="/quizzes/:quiz_id/edit" element={<EditQuiz />} />
         <Route path="/quizzes/create" element={<CreateQuiz />} />
+        <Route path="/quizzes/scores" element={<EndQuiz />} />
       </Routes>
     </BrowserRouter>
   );

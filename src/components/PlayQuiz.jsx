@@ -59,6 +59,14 @@ export function PlayQuiz() {
     setQuestionTypes(categoryAssignments);
   }, []);
 
+  useEffect(() => {
+    if (!hieroglyphs.some((el) => el.disabled === false) && category === "") {
+      navigate("/quizzes/scores", {
+        state: { team1Score, team1name, team2Score, team2name },
+      });
+    }
+  }, [category]);
+
   function handleSubmit(e) {
     e.preventDefault();
     if (team1name && team2name) {
@@ -70,7 +78,6 @@ export function PlayQuiz() {
     setHieroglyphs((curr) => {
       const newGlyphs = [...curr];
       newGlyphs[index].disabled = true;
-      console.log(newGlyphs);
       return newGlyphs;
     });
     setCategory(questionTypes[index]);
