@@ -26,6 +26,7 @@ export function Wall({
   const [timer, setTimer] = useState(0);
   const [timeOut, setTimeOut] = useState(false);
   const [wallBeat, setWallBeat] = useState(false);
+  const [score, setScore] = useState(0);
 
   function getWords() {
     return Array.from(
@@ -118,26 +119,28 @@ export function Wall({
       setTimeout(() => {
         setTimer(timer - 1);
       }, 1000);
-    } else if (timer === 0 && started) {
+    } else if (timer === 0 && started && wallBeat === false) {
       setTimeOut(true);
       setShowAns1(true);
       setShowAns2(true);
       setShowAns3(true);
       setShowAns4(true);
+      setScore(4 - wall.length / 4);
       setWall([]);
-    } else if (!wall.length) {
+    } else if (!wall.length && started) {
+      setTimeOut(true);
+      setShowAns1(true);
+      setShowAns2(true);
+      setShowAns3(true);
+      setShowAns4(true);
+      setScore(5);
       setWallBeat(true);
       setTimer(0);
     }
   }, [timer]);
 
   function handleScore() {
-    let score = 4;
-    if (!wall.length) {
-      score = 5;
-    } else {
-      score -= wall.length / 4;
-    }
+    console.log(score);
     if (turn) {
       setTeam1Score((currScore) => {
         return currScore + score;
@@ -150,12 +153,12 @@ export function Wall({
     setTurn(!turn);
     setWallBeat(false);
     setStarted(false);
-    setCounter(counter + 1);
     setTimeOut(false);
     setShowAns1(false);
     setShowAns2(false);
     setShowAns3(false);
     setShowAns4(false);
+    setCounter(counter + 1);
   }
 
   if (!started) {
@@ -168,7 +171,7 @@ export function Wall({
         <button
           className="wall-score-button"
           onClick={() => {
-            setTimer(45);
+            setTimer(30);
             setStarted(true);
           }}
         >

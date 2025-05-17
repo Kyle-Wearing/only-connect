@@ -17,8 +17,8 @@ import { Music } from "./Music";
 
 export function PlayQuiz() {
   const { quiz_id } = useParams();
-  const [team1name, setTeam1name] = useState("");
-  const [team2name, setTeam2name] = useState("");
+  const [team1name, setTeam1name] = useState("a");
+  const [team2name, setTeam2name] = useState("b");
   const [started, setStarted] = useState(false);
   const navigate = useNavigate();
   const [team1Score, setTeam1Score] = useState(0);
