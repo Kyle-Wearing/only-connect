@@ -84,6 +84,7 @@ export function Images({
       <h2 className="image-turn">
         {turn ? `${team1name}'s turn` : `${team2name}'s turn`}
       </h2>
+      <p className="image-question-num">Question {counter + 1}</p>
       <div className="image-answer-box">
         <p>Answer</p>
         {revealAns && (

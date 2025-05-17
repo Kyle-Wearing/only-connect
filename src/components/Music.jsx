@@ -95,6 +95,7 @@ export function Music({
       <h2 className="music-turn">
         {turn ? `${team1name}'s turn` : `${team2name}'s turn`}
       </h2>
+      <p className="music-question-num">Question {counter + 1}</p>
       <div className="music-answer-box">
         <p>Answer</p>
         {revealAns && (

@@ -60,3 +60,8 @@
   padding: 1.5rem 0;
   margin-top: auto;
 }
+
+.connections-question-num {
+  color: white;
+  text-align: center;
+}

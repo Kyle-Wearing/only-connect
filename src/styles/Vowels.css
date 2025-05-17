@@ -63,3 +63,8 @@
 .vowels-ans-text {
   font-size: xxx-large;
 }
+
+.vowels-question-num {
+  color: white;
+  text-align: center;
+}

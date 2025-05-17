@@ -51,6 +51,7 @@ export function MissingVowels({
   return (
     <div className="vowels-container">
       <h1 className="vowels-title">Missing Vowels</h1>
+      <p className="vowels-question-num">Question {counter + 1}</p>
       <div className="vowels-clue-box">
         <p className="vowels-clue-text">{questions[counter].clue}</p>
       </div>

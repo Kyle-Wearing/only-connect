@@ -84,6 +84,7 @@ export function Sequence({
       <h2 className="sequence-turn">
         {turn ? `${team1name}'s turn` : `${team2name}'s turn`}
       </h2>
+      <p className="sequence-question-num">Question {counter + 1}</p>
       <div className="sequence-answer-box">
         <p>Answer</p>
         {revealAns && (

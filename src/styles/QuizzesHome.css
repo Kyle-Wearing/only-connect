@@ -9,6 +9,8 @@
 }
 
 .card {
+  display: flex;
+  flex-direction: column;
   background-color: white;
   padding: 2rem 2.5rem;
   border-radius: 12px;
@@ -39,6 +41,24 @@
 }
 
 .play-button:hover {
+  background-color: #2980b9;
+}
+
+.quiz-host-button {
+  width: fit-content;
+  align-self: end;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: none;
+  background-color: #3498db;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.quiz-host-button:hover {
   background-color: #2980b9;
 }
 

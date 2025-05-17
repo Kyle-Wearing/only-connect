@@ -23,6 +23,16 @@ export function QuizzesHome() {
   return (
     <div className="container">
       <div className="card">
+        <button
+          className="quiz-host-button"
+          onClick={() => {
+            navigate(`/quizzes/${quiz_id}/host`, {
+              state: { quiz_name: quiz_name },
+            });
+          }}
+        >
+          Host
+        </button>
         <h2>{quiz_name}</h2>
         <div className="button-group">
           <button

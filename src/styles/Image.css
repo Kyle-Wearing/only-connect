@@ -67,3 +67,8 @@
   border: 3px solid black;
   border-radius: 10px;
 }
+
+.image-question-num {
+  color: white;
+  text-align: center;
+}

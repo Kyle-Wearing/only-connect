@@ -140,7 +140,6 @@ export function Wall({
   }, [timer]);
 
   function handleScore() {
-    console.log(score);
     if (turn) {
       setTeam1Score((currScore) => {
         return currScore + score;

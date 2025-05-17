@@ -84,6 +84,7 @@ export function Connections({
       <h2 className="connections-turn">
         {turn ? `${team1name}'s turn` : `${team2name}'s turn`}
       </h2>
+      <p className="connections-question-num">Question {counter + 1}</p>{" "}
       <div className="connections-answer-box">
         <p>Answer</p>
         {revealAns && (
