@@ -86,24 +86,34 @@ export function Connections({
       </h2>
       <div className="connections-answer-box">
         <p>Answer</p>
-        {revealAns && <p>{questions[counter].answer}</p>}
+        {revealAns && (
+          <p className="connections-text">{questions[counter].answer}</p>
+        )}
       </div>
       <div className="connections-clue-container">
         <div className="connections-clue-box">
           <p>5 Points</p>
-          {questions[counter] ? <p>{questions[counter].clue_1}</p> : null}
+          {questions[counter] ? (
+            <p className="connections-text">{questions[counter].clue_1}</p>
+          ) : null}
         </div>
         <div className="connections-clue-box">
           <p>3 Points</p>
-          {clueNum > 1 ? <p>{questions[counter].clue_2}</p> : null}
+          {clueNum > 1 ? (
+            <p className="connections-text">{questions[counter].clue_2}</p>
+          ) : null}
         </div>
         <div className="connections-clue-box">
           <p>2 Points</p>
-          {clueNum > 2 ? <p>{questions[counter].clue_3}</p> : null}
+          {clueNum > 2 ? (
+            <p className="connections-text">{questions[counter].clue_3}</p>
+          ) : null}
         </div>
         <div className="connections-clue-box">
           <p>1 Point</p>
-          {clueNum > 3 ? <p>{questions[counter].clue_4}</p> : null}
+          {clueNum > 3 ? (
+            <p className="connections-text">{questions[counter].clue_4}</p>
+          ) : null}
         </div>
       </div>
       <div className="connections-button-container">

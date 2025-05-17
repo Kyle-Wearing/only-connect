@@ -26,13 +26,19 @@
   justify-content: space-evenly;
 }
 
+.connections-text {
+  margin-top: -15px;
+  font-size: 1.5vw;
+}
+
 .connections-answer-box {
   align-self: center;
   margin-bottom: 50px;
   background-color: white;
   border: 1px solid black;
   border-radius: 5px;
-  height: 10vh;
+  min-height: 10vh;
+  max-height: 20vh;
   width: 20vw;
   text-align: center;
 }

@@ -32,9 +32,15 @@
   background-color: white;
   border: 1px solid black;
   border-radius: 5px;
-  height: 10vh;
+  min-height: 10vh;
+  max-height: 20vh;
   width: 20vw;
   text-align: center;
+}
+
+.music-answer-txt {
+  margin-top: -15px;
+  font-size: 1.5vw;
 }
 
 .music-clue-box {

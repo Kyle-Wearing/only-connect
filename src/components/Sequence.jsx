@@ -86,24 +86,34 @@ export function Sequence({
       </h2>
       <div className="sequence-answer-box">
         <p>Answer</p>
-        {revealAns && <p>{questions[counter].answer}</p>}
+        {revealAns && (
+          <p className="sequence-text">{questions[counter].answer}</p>
+        )}
       </div>
       <div className="sequence-clue-container">
         <div className="sequence-clue-box">
           <p>5 Points</p>
-          {questions[counter] ? <p>{questions[counter].clue_1}</p> : null}
+          {questions[counter] ? (
+            <p className="sequence-text">{questions[counter].clue_1}</p>
+          ) : null}
         </div>
         <div className="sequence-clue-box">
           <p>3 Points</p>
-          {clueNum > 1 ? <p>{questions[counter].clue_2}</p> : null}
+          {clueNum > 1 ? (
+            <p className="sequence-text">{questions[counter].clue_2}</p>
+          ) : null}
         </div>
         <div className="sequence-clue-box">
           <p>2 Points</p>
-          {clueNum > 2 ? <p>{questions[counter].clue_3}</p> : null}
+          {clueNum > 2 ? (
+            <p className="sequence-text">{questions[counter].clue_3}</p>
+          ) : null}
         </div>
         <div className="sequence-clue-box">
           <p>1 Point</p>
-          {clueNum > 3 ? <p>{questions[counter].clue_4}</p> : null}
+          {clueNum > 3 ? (
+            <p className="sequence-text">{questions[counter].clue_4}</p>
+          ) : null}
         </div>
       </div>
       <div className="sequence-button-container">

@@ -86,7 +86,9 @@ export function Images({
       </h2>
       <div className="image-answer-box">
         <p>Answer</p>
-        {revealAns && <p>{questions[counter].answer}</p>}
+        {revealAns && (
+          <p className="image-answer-txt">{questions[counter].answer}</p>
+        )}
       </div>
       <div className="image-clue-container">
         <div className="image-clue-box">

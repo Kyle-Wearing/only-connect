@@ -17,6 +17,9 @@ export function Profile() {
   }
 
   useEffect(() => {
+    if (!userId) {
+      navigate("/home");
+    }
     apiCall();
   }, []);
 

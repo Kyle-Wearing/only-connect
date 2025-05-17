@@ -118,6 +118,7 @@ export function embedYoutubeUrls(questions) {
       clue_3_duration: question.clue_3_duration,
       clue_4_url: clue_4,
       clue_4_duration: question.clue_4_duration,
+      answer: question.answer,
     };
   });
 

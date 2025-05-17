@@ -19,6 +19,8 @@ export function Music({
   const [correctDisabled, setCorrectDisabled] = useState(false);
   const [playMusic, setPlayMusic] = useState(0);
 
+  console.log(questions);
+
   useEffect(() => {
     if (counter === questions.length) {
       setCategory("");
@@ -95,7 +97,9 @@ export function Music({
       </h2>
       <div className="music-answer-box">
         <p>Answer</p>
-        {revealAns && <p>{questions[counter].answer}</p>}
+        {revealAns && (
+          <p className="music-answer-txt">{questions[counter].answer}</p>
+        )}
       </div>
       <div className="music-clue-container">
         <div className="music-clue-box">
