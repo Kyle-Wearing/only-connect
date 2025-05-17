@@ -8,4 +8,4 @@ The music questions url must be a youtube url with the start time of the music v
 
 The rest of the quesuions are just plain text clues and answers, the missing vowels clue will be the category (cities, foods ect) then the answer will be the full answer, the game will handle removing the vowels.
 
-Site URl: https://68287496ce603337f2528a34--only-connect.netlify.app
+Site URl: https://only-connect.netlify.app
