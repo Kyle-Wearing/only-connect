@@ -46,18 +46,34 @@
 }
 
 .glyph-tile:hover {
-  background-color: #ecf5fb;
+  background-color: lightcyan;
   transform: translateY(-2px);
+}
+
+.glyph-tile:disabled {
+  border: none;
+  background-color: #3498db;
 }
 
 .glyph-img {
   width: 10vw;
   height: 10vw;
   margin-bottom: 1vw;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.glyph-tile:disabled .glyph-img {
+  filter: grayscale(100%) brightness(0.3);
+  opacity: 0.3;
 }
 
 .glyph-name {
   font-size: 150%;
+  border: none;
+  background: transparent;
+  cursor: pointer;
 }
 
 .scoreboard {

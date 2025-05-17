@@ -24,6 +24,8 @@ export function Wall({
   const [showAns3, setShowAns3] = useState(false);
   const [showAns4, setShowAns4] = useState(false);
   const [timer, setTimer] = useState(0);
+  const [timeOut, setTimeOut] = useState(false);
+  const [wallBeat, setWallBeat] = useState(false);
 
   function getWords() {
     return Array.from(
@@ -49,11 +51,15 @@ export function Wall({
   }
 
   useEffect(() => {
-    const wordArr = getWords();
-    const randomWords = shuffleArray(shuffleArray(shuffleArray(wordArr)));
-    setWall(randomWords);
-    generateAnswers(wordArr);
-  }, []);
+    if (counter === 2) {
+      setCategory("");
+    } else {
+      const wordArr = getWords();
+      const randomWords = shuffleArray(shuffleArray(shuffleArray(wordArr)));
+      setWall(randomWords);
+      generateAnswers(wordArr);
+    }
+  }, [counter]);
 
   function checkAnswer() {
     const guessStr = guess.slice().sort().join("/");
@@ -108,20 +114,59 @@ export function Wall({
   }
 
   useEffect(() => {
-    if (timer > 0) {
+    if (timer > 0 && wall.length) {
       setTimeout(() => {
         setTimer(timer - 1);
       }, 1000);
+    } else if (timer === 0 && started) {
+      setTimeOut(true);
+      setShowAns1(true);
+      setShowAns2(true);
+      setShowAns3(true);
+      setShowAns4(true);
+      setWall([]);
+    } else if (!wall.length) {
+      setWallBeat(true);
+      setTimer(0);
     }
   }, [timer]);
 
+  function handleScore() {
+    let score = 4;
+    if (!wall.length) {
+      score = 5;
+    } else {
+      score -= wall.length / 4;
+    }
+    if (turn) {
+      setTeam1Score((currScore) => {
+        return currScore + score;
+      });
+    } else {
+      setTeam2Score((currScore) => {
+        return currScore + score;
+      });
+    }
+    setTurn(!turn);
+    setWallBeat(false);
+    setStarted(false);
+    setCounter(counter + 1);
+    setTimeOut(false);
+    setShowAns1(false);
+    setShowAns2(false);
+    setShowAns3(false);
+    setShowAns4(false);
+  }
+
   if (!started) {
     return (
-      <>
+      <div className="wall-page">
         <h2 className="wall-turn">
           {turn ? `${team1name}'s Wall` : `${team2name}'s Wall`}
         </h2>
+        <p className="wall-txt">Choose a player to play the wall</p>
         <button
+          className="wall-score-button"
           onClick={() => {
             setTimer(45);
             setStarted(true);
@@ -129,17 +174,18 @@ export function Wall({
         >
           Start
         </button>
-      </>
+      </div>
     );
   }
 
   return (
-    <>
-      <h1>{timer}</h1>
+    <div className="wall-page">
+      <h1 className="wall-timer">{timer}</h1>
       <div className="wall">
         {wall.map((word, index) => {
           return (
             <button
+              disabled={timeOut}
               className={guess.includes(word) ? "guessed-word" : "word"}
               key={index}
               onClick={() => handleClick(word)}
@@ -149,12 +195,62 @@ export function Wall({
           );
         })}
       </div>
-      <div>
-        {showAns1 && <p>{questions[counter].answer_1}</p>}
-        {showAns2 && <p>{questions[counter].answer_2}</p>}
-        {showAns3 && <p>{questions[counter].answer_3}</p>}
-        {showAns4 && <p>{questions[counter].answer_4}</p>}
+      {timeOut && (
+        <>
+          <p className="wall-txt">
+            {wallBeat ? "Well done" : "You ran out of time"}
+          </p>
+          <button className="wall-score-button" onClick={handleScore}>
+            button
+          </button>
+        </>
+      )}
+      <div className="wall-answer-container">
+        {showAns1 && (
+          <div className="wall-answers">
+            <h3 className="wall-answers-title">
+              {questions[counter].answer_1}
+            </h3>
+            <p>{questions[counter].word_1}</p>
+            <p>{questions[counter].word_2}</p>
+            <p>{questions[counter].word_3}</p>
+            <p>{questions[counter].word_4}</p>
+          </div>
+        )}
+        {showAns2 && (
+          <div className="wall-answers">
+            <h3 className="wall-answers-title">
+              {questions[counter].answer_2}
+            </h3>
+            <p>{questions[counter].word_5}</p>
+            <p>{questions[counter].word_6}</p>
+            <p>{questions[counter].word_7}</p>
+            <p>{questions[counter].word_8}</p>
+          </div>
+        )}
+        {showAns3 && (
+          <div className="wall-answers">
+            <h3 className="wall-answers-title">
+              {questions[counter].answer_3}
+            </h3>
+            <p>{questions[counter].word_9}</p>
+            <p>{questions[counter].word_10}</p>
+            <p>{questions[counter].word_11}</p>
+            <p>{questions[counter].word_12}</p>
+          </div>
+        )}
+        {showAns4 && (
+          <div className="wall-answers">
+            <h3 className="wall-answers-title">
+              {questions[counter].answer_4}
+            </h3>
+            <p>{questions[counter].word_13}</p>
+            <p>{questions[counter].word_14}</p>
+            <p>{questions[counter].word_15}</p>
+            <p>{questions[counter].word_16}</p>
+          </div>
+        )}
       </div>
-    </>
+    </div>
   );
 }

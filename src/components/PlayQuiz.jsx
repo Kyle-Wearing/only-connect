@@ -118,13 +118,6 @@ export function PlayQuiz() {
   if (!category) {
     return (
       <>
-        <button
-          onClick={() => {
-            setCategory("wall");
-          }}
-        >
-          WALL
-        </button>
         <div className="scoreboard">
           <p className="score">
             {team1name}: <span className="score-value">{team1Score}</span>
