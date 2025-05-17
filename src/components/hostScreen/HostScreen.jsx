@@ -69,6 +69,7 @@ export function HostScreen() {
         <button
           className="host-button"
           onClick={() => {
+            setQuestionNum(0);
             setCategory("");
           }}
         >
