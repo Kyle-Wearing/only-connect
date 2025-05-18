@@ -1,4 +1,4 @@
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { getAllQuestions } from "../../../utils";
 import { useEffect, useState } from "react";
 import "../../styles/Host.css";
@@ -12,6 +12,8 @@ export function HostScreen() {
   const [category, setCategory] = useState("");
   const [questionNum, setQuestionNum] = useState(0);
 
+  const navigate = useNavigate();
+
   async function apiCall() {
     const fetchedQuestions = await getAllQuestions(quiz_id);
     setQuestions(fetchedQuestions);
@@ -19,6 +21,9 @@ export function HostScreen() {
   }
 
   useEffect(() => {
+    if (!quiz_id) {
+      navigate("home");
+    }
     apiCall();
   }, []);
 
@@ -41,6 +46,14 @@ export function HostScreen() {
   if (!category) {
     return (
       <>
+        <button
+          className="host-button"
+          onClick={() => {
+            navigate(-1);
+          }}
+        >
+          Back
+        </button>
         <h1 className="host-title">{quiz_name}</h1>
         <div className="host-list">
           {categorys.map((category) => {
