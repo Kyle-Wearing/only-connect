@@ -149,6 +149,7 @@ body {
   margin-bottom: 1rem;
   align-self: center;
   width: fit-content;
+  max-width: 90%;
   text-align: center;
 }
 
@@ -158,4 +159,5 @@ body {
   color: white;
   text-align: center;
   font-size: xx-large;
+  max-width: 90%;
 }
