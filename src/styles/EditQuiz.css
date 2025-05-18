@@ -2,8 +2,8 @@ html,
 body {
   height: 100%;
   margin: 0;
-  padding: 0;
   overflow-x: hidden;
+  overflow-y: auto;
 }
 
 body {
@@ -18,12 +18,16 @@ body {
   height: 100vh;
   overflow-y: auto;
   box-sizing: border-box;
+  align-items: stretch;
 }
 
 .question-list {
-  width: 100%;
-  max-width: 700px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
   max-height: 80vh;
+  overflow-y: auto;
+  scrollbar-width: none;
 }
 
 .question-form {
@@ -33,6 +37,10 @@ body {
   margin-bottom: 1.5rem;
   border-radius: 12px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  align-self: stretch;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .question-form form {
@@ -62,6 +70,7 @@ body {
   text-align: center;
   margin-bottom: 1rem;
   outline: none;
+  align-self: center;
 }
 
 .save-button {
@@ -75,6 +84,7 @@ body {
   margin-bottom: 1.5rem;
   transition: background-color 0.3s ease, transform 0.2s ease;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  align-self: center;
 }
 
 .save-button:hover {
@@ -135,4 +145,20 @@ body {
 .back-button-edit:hover {
   background-color: rgba(255, 255, 255, 0.1);
   transform: translateY(-1px);
+}
+
+.quiz-title-text {
+  font-size: 2rem;
+  font-weight: bold;
+  background: transparent;
+  border: none;
+  color: white;
+  text-align: center;
+}
+
+.quiz-title-input {
+  border: 1px solid white;
+  border-radius: 50px;
+  margin-bottom: 1rem;
+  align-self: center;
 }
