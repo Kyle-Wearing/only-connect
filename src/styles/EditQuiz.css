@@ -147,18 +147,19 @@ body {
   transform: translateY(-1px);
 }
 
-.quiz-title-text {
-  font-size: 2rem;
-  font-weight: bold;
-  background: transparent;
-  border: none;
-  color: white;
-  text-align: center;
-}
-
 .quiz-title-input {
   border: 1px solid white;
   border-radius: 50px;
   margin-bottom: 1rem;
   align-self: center;
+  width: fit-content;
+  text-align: center;
+}
+
+.quiz-title-text {
+  background: transparent;
+  border: none;
+  color: white;
+  text-align: center;
+  font-size: xx-large;
 }
