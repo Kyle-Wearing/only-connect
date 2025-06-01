@@ -23,6 +23,9 @@ export function EditQuiz() {
   }
 
   useEffect(() => {
+    if (!quiz_name || !quiz_maker) {
+      navigate("/");
+    }
     apiCall();
   }, []);
 

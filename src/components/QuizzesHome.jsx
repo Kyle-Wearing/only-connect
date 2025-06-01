@@ -1,5 +1,6 @@
 import { useLocation, useParams, useNavigate } from "react-router-dom";
 import "../styles/QuizzesHome.css";
+import { useEffect } from "react";
 
 export function QuizzesHome() {
   const { quiz_id } = useParams();
@@ -7,6 +8,12 @@ export function QuizzesHome() {
   const { quiz_name, quiz_maker } = location.state;
   const user_id = sessionStorage.getItem("user_id");
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!quiz_name || !quiz_maker) {
+      navigate("/");
+    }
+  }, []);
 
   function handleEdit() {
     navigate(`/quizzes/${quiz_id}/edit`, {
